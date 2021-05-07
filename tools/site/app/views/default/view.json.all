@@ -1,0 +1,27 @@
+{
+  "title": "Portland State University Codelabs",
+
+  "description": "This is a collection of codelabs used for courses within Portland State University's Computer Science program.  Feel free to use them.",
+
+  "tags": ["cs495", "cs410"],
+
+  "categories": [],
+
+  "customStyle": "",
+
+  "exclude": [],
+
+  "logoUrl": "/cs495/logopsu.png",
+
+  "catLevel": 0,
+
+  "sort": "mainCategory",
+
+  "pins": [],
+
+  "ga": "",
+
+  "toolbarBgColor": "#F7F7F7",
+
+  "hidden": false
+}

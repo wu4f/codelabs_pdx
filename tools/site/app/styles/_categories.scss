@@ -1,4 +1,7 @@
 /**
+ * Also update default/view.json to add new category
+ * Ensure each google doc has at least 2 categories
+ *
  * Copyright 2015 Google Inc. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -56,7 +59,7 @@ $color-weave-green: #0f9d58;
   }
 
   %icon-#{$icon} {
-    background-image: url('/images/icons/#{$icon}');
+    background-image: url('../images/icons/#{$icon}');
   }
 
   @each $category in $categories {
@@ -118,7 +121,7 @@ $color-google-blue, 'wear-os.svg');
   $color-blockly-blue, 'blockly.svg');
 
 @include codelab-card(['brillo'],
-  $color-brillo-blue, 'brillo.svg');
+  $color-brillo-blue, 'brillo.png');
 
 @include codelab-card(['cast', 'chromecast', 'chrome-cast'],
   $color-cast-grey, 'cast.svg');
@@ -126,8 +129,9 @@ $color-google-blue, 'wear-os.svg');
 @include codelab-card(['chrome', 'google-chrome', 'googlechrome'],
   $color-google-blue, 'chrome.svg');
 
-@include codelab-card(['cloud', 'cloud-about', 'cloud-general', 'cloud-other', 'cloud-others', 'cloud-platform', 'cloud-tools', 'cloud-cloud-tools'],
-  $color-google-blue, 'cloud-platform.svg');
+//@include codelab-card(['cloud', 'cloud-about', 'cloud-general', 'cloud-other', 'cloud-others', 'cloud-platform', 'cloud-tools', 'cloud-cloud-tools'],
+@include codelab-card(['cloud-about', 'cloud-general', 'cloud-other', 'cloud-others', 'cloud-platform', 'cloud-tools', 'cloud-cloud-tools', 'gcp', 'google'],
+  $color-google-blue, 'cloud.svg');
 
 @include codelab-card(['cloud-appengine', 'cloud-app-engine'],
   $color-google-blue, 'cloud-appengine.svg');
@@ -153,7 +157,7 @@ $color-google-blue, 'wear-os.svg');
   $color-google-blue, 'cloud-monitoring.svg');
 @include codelab-card(['cloud-networking', 'cloud-network'],
   $color-google-blue, 'cloud-networking.svg');
-@include codelab-card(['cloud-security', 'cloud-security-command-center'],
+@include codelab-card(['cloud-security-command-center'],
   $color-google-blue, 'cloud-security-command-center.svg');
 @include codelab-card(['cloud-sql'],
   $color-google-blue, 'cloud-sql.svg');
@@ -199,3 +203,59 @@ $color-weave-green, 'weave.svg');
 
 @include codelab-card(['web'],
   $color-google-blue, 'web.svg');
+
+$color-sawtooth-blue: #177aa3;
+$color-ethereum-blue: #6d75b7;
+$color-python-blue: #3772a3;
+$color-sictf-blue: #1b81c1;
+$color-server-green: #44c4a1;
+$color-manticore-red: #ed1c24;
+$color-chrome-red: #ea4335;
+$color-cloud-security-blue: #0062aa;
+$color-tools-orange: #f36f23;
+$color-networking-blue: #0058af;
+
+@include codelab-card(['setup'],
+  $color-google-blue, 'web.svg');
+
+@include codelab-card(['server'],
+  $color-server-green, 'webserver.svg');
+
+@include codelab-card(['cloud'],
+  $color-cloud-security-blue, 'cloudsecurity.png');
+
+@include codelab-card(['security'],
+  $color-sictf-blue, 'si.png');
+
+@include codelab-card(['blockchain'],
+  $color-blockly-blue, 'blockly.svg');
+
+@include codelab-card(['sawtooth'],
+  $color-sawtooth-blue, 'sawtooth.png');
+
+@include codelab-card(['ethereum'],
+  $color-ethereum-blue, 'ethereum.svg');
+
+@include codelab-card(['manticore'],
+  $color-manticore-red, 'manticore.png');
+
+@include codelab-card(['solidity'],
+  $color-unity-grey, 'solidity.svg');
+
+@include codelab-card(['aws'],
+  $color-unity-grey, 'aws.svg');
+
+@include codelab-card(['client'],
+  $color-chrome-red, 'chrome.svg');
+
+@include codelab-card(['python'],
+  $color-python-blue, 'python.svg');
+
+@include codelab-card(['tools','homework'],
+  $color-tools-orange, 'tools.png');
+
+@include codelab-card(['vyper'],
+  $color-unity-grey, 'vyper.svg');
+
+@include codelab-card(['networking'],
+  $color-networking-blue, 'networking.png');

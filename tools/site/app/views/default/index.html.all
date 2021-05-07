@@ -34,6 +34,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <link rel="stylesheet" href="/styles/main.css">
 
+  {% if view.customStyle %}
+    <link rel="stylesheet" href="{{view.customStyle}}">
+  {%- endif %}
+
   <link rel="import" href="/elements/elements.html">
 
   <style is="custom-style">
@@ -90,12 +94,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <body id="app" is="body-bind" class="loading fullbleed {% if view.id != 'default' -%}view{%- endif -%}">
   <paper-header-panel id="main" mode="standard" main>
-<!--    {% raw %}
+    {% raw %}
     <div id="mainToolbar" class="paper-header">
       <div class="site-width layout horizontal">
-        <a href="/">
-          <img src="/images/logo.png" class="logo-devs" alt="Codelabs Logo">
-        </a>
+        <!--<a href="/">
+          <img src="/cs495/logopsu.png" class="logo-devs" alt="Portland State">
+        </a>-->
         <div id="searchbar">
           <paper-input-container no-label-float>
             <paper-icon-button prefix icon="search"></paper-icon-button>
@@ -106,22 +110,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </div>
     </div>
     {% endraw %}
--->
+
     {# Event pages force down attribute. On homepage, it's applied dynamically. #}
     <header id="banner" {% if view.id != 'default' -%}down{%- else %}down$="[[_toBoolean(selectedFilter)]]"{%- endif %}>
       <div class="site-width">
-        {% if view.id == 'def' %}
-	<h3 class="banner-title">{{view.title}}</h3>
+        {% if view.id == 'default' %}
+        <h2 class="banner-title">Codelabs</h2>
         <div class="banner-description"
              data-filter-selected$="{% raw %}[[_toBoolean(selectedFilter)]]{% endraw %}">
           <p class="banner-info">
 	  {{view.description}}
           </p>
         {%- else -%}
-	  <p><img id="logo" src="{{view.logoUrl}}" width="30" height="40" alt="Portland State University"></p>
           <div class="banner-description">
+            <img id="logo" src="{{view.logoUrl}}" alt="Event logo">
             <div class="banner-meta">
-              <h2>{{view.title}}</h2>
+              <h3>{{view.title}}</h3>
               {% if view.description -%}
                 <p>{{view.description}}</p>
               {%- endif %}
@@ -141,7 +145,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </paper-tabs>
         </div>
 
-        {% if view.id != 'xxxx' %}
+        {% if view.id == 'default' %}
         <paper-dropdown-menu
           label="Choose a class"
           class="dropdown-filter"
@@ -200,15 +204,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                data-category="{{codelab.category}}"
                data-title="{{codelab.title}}"
                data-duration="{{codelab.duration}}"
-               data-summary="{{codelab.summary}}"
                data-updated="{{codelab.updated}}"
                data-tags="{{codelab.tags}}"
                data-pin="{{codelabPin(view, codelab)}}">
               {%- if codelabPin(view, codelab) -%}
                 <div class="card-pin"></div>
               {%- endif -%}
-	      <div class="description"><h4>{{codelab.title}}</h4></div>
-	      <div class="description">{{codelab.summary}}</div>
+              <div class="description">{{codelab.title}}</div>
               <div class="card-duration">
                 <span>{%- if codelab.duration -%}{{codelab.duration}} min {%- endif -%}</span>
                 <span>{%- if codelab.updated -%}Updated {{codePrettyDate(codelab.updated)}}{%- endif -%}</span>
@@ -226,6 +228,45 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         Loading Codelabs, please wait...
       </div>
     </main>
+
+    <footer id="footer">
+      <div class="footer-wrapper site-width">
+        <div class="link-list">
+          <label>Connect</label>
+          <ul>
+            <li><a href="https://www.example.com/">Example</a></li>
+          </ul>
+        </div>
+        <div class="link-list">
+          <label>Programs</label>
+          <ul>
+            <li><a href="https://www.example.com/">Example</a></li>
+          </ul>
+        </div>
+        <div class="link-list">
+          <label>Developer Consoles</label>
+          <ul>
+            <li><a href="https://www.example.com/">Example</a></li>
+          </ul>
+        </div>
+        <div class="link-list">
+          <label>Explore</label>
+           <ul>
+            <li><a href="https://www.example.com/">Example</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <div class="footerbar">
+      <div class="site-width layout horizontal center justified">
+        <span>
+          <a href="https://example.com">Terms</a>
+          &nbsp; | &nbsp;
+          <a href="https://example.com">Privacy</a>
+        </span>
+      </div>
+    </div>
 
   </paper-header-panel>
 

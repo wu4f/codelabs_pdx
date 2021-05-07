@@ -1,0 +1,27 @@
+{
+  "title": "Web and Cloud Security",
+
+  "description": "Labs, homework, and programs should be completed by each student.  For each lab, include screenshots demonstrating completion that include your OdinID somewhere in the capture.  These should be included in your lab notebook",
+
+  "tags": ["cs495"],
+
+  "categories": [],
+
+  "customStyle": "",
+
+  "exclude": [],
+
+  "logoUrl": "/images/logopsu.png",
+
+  "catLevel": 0,
+
+  "sort": "mainCategory",
+
+  "pins": [],
+
+  "ga": "",
+
+  "toolbarBgColor": "#F7F7F7",
+
+  "hidden": false
+}

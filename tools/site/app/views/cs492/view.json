@@ -1,0 +1,27 @@
+{
+  "title": "Malware Reverse Engineering",
+
+  "description": "The labs below walk through setting up and running the AFL lab and angr symbolic exeuction CTF.  Read more about these codelabs at https://edu.google.com/why-google/case-studies/portland-state-cybersecurity-cloud",
+
+  "tags": ["cs492"],
+
+  "categories": [],
+
+  "customStyle": "",
+
+  "exclude": [],
+
+  "logoUrl": "/images/logopsu.png",
+
+  "catLevel": 0,
+
+  "sort": "mainCategory",
+
+  "pins": [],
+
+  "ga": "",
+
+  "toolbarBgColor": "#F7F7F7",
+
+  "hidden": false
+}

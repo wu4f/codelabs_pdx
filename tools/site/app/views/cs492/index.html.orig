@@ -141,29 +141,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </paper-tabs>
         </div>
 
-        {% if view.id != 'xxxx' %}
-        <paper-dropdown-menu
-          label="Choose a class"
-          class="dropdown-filter"
-          no-label-float
-          noink no-animations
-        >
-          <paper-listbox
-            id="eventList"
-            slot="dropdown-content"
-            class="dropdown-content"
-          >
-            {%- for view in views -%}
-              {%- if view.id != 'default' && !view.hidden -%}
-                <a href="/{{view.url}}/" tabindex="-1">
-                  <paper-item>{{view.title}}</paper-item>
-                </a>
-              {%- endif -%}
-            {%- endfor %}
-          </paper-listbox>
-        </paper-dropdown-menu>
-        {% endif %}
-
         {%- if showcats -%}
         <paper-dropdown-menu
           label="Filter by category"
@@ -230,8 +207,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </paper-header-panel>
 
   <!-- build:js /scripts/main.js -->
-  <script src="bower_components/url-search-params-polyfill/build/url-search-params.js"></script>
-  <script src="scripts/app.js"></script>
+  <script src="/bower_components/url-search-params-polyfill/build/url-search-params.js"></script>
+  <script src="/scripts/app.js"></script>
   <!-- endbuild-->
 </body>
 </html>
