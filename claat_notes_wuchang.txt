@@ -1,0 +1,8 @@
+# Use the remote codelab-elements to avoid having to do a local claat serve
+#   to download the bower_components locally
+#   1. git clone https://github.com/googlecodelabs/tools
+#   2. copy default/* from cs410b, cs410s and default/view.json
+#   4. cd tools/site ; npm install
+#   6. tools/site/app/styles/_categories.scss for custom categories
+#   7. mv tools/site/app/images tools/site/app/images.unused
+#   8. ln -s ~/courses/cs410b/tools/site/app/images tools/site/app/images
