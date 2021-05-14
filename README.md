@@ -3,7 +3,8 @@
 `labs` contain individual codelabs
 `tools` contain the site pages that collect individual codelabs together based on how they are tagged
 ---
-```sudo apt update -y
+```
+sudo apt update -y
 sudo apt install golang npm make -y
 sudo npm install gulp-cli -g
 go get github.com/googlecodelabs/tools/claat
