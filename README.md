@@ -5,7 +5,9 @@
 ---
 ```
 sudo apt update -y
-sudo apt install golang npm make -y
+sudo apt install npm make -y
+wget https://dl.google.com/go/go1.17.7.linux-amd64.tar.gz
+tar -xvf go1.17.7.linux-amd64.tar.gz
 sudo npm install gulp-cli -g
 go get github.com/googlecodelabs/tools/claat
 cat << EOF >> .profile
