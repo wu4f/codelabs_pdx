@@ -1,0 +1,751 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Labs, homework, and programs should be completed by each student.  For each lab, include screenshots demonstrating completion that include your OdinID somewhere in the capture.  These should be included in your lab notebook">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Web and Cloud Security">
+  <meta name="application-name" content="Web and Cloud Security">
+  <link rel="canonical" href="https://example.com/cs495/" />
+  <link rel="preconnect" href="https://www.google-analytics.com" />
+
+  <script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-49880327-14', 'auto');
+    ga('send', 'pageview');
+    
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  <title>Web and Cloud Security</title>
+
+  <link rel="stylesheet" href="/styles/main.css">
+
+  <link rel="import" href="/elements/elements.html">
+
+  <style is="custom-style">
+    :root {
+      --paper-tabs-selection-bar-color: currentcolor;
+      --paper-input-container-underline: {
+        display: none;
+      };
+      --paper-input-container-underline-focus: {
+        display: none;
+      };
+    }
+
+    .dropdown-filter {
+      --paper-input-container: {
+        padding: 8px;
+      }
+    }
+  </style>
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#455a64">
+  <meta name="apple-mobile-web-app-title" content="Web and Cloud Security">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="194x194" href="/images/favicons/favicon-194x194.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicons/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#455a64">
+  <meta name="msapplication-TileColor" content="#455a64">
+  <meta name="msapplication-TileImage" content="/images/favicons/mstile-144x144.png">
+  <meta name="theme-color" content="#455a64">
+
+  <meta name="og:type" property="og:type" content="website" />
+  <meta name="og:title" property="og:title" content="Web and Cloud Security" />
+  <meta name="og:description" property="og:description" content="Labs, homework, and programs should be completed by each student.  For each lab, include screenshots demonstrating completion that include your OdinID somewhere in the capture.  These should be included in your lab notebook" />
+  <meta name="og:url" property="og:url" content="https://example.com/cs495/" />
+  <meta name="og:site_name" property="og:site_name" content="Codelabs" />
+  <meta name="og:determiner" property="og:determiner" content="the" />
+  <meta name="og:locale" property="og:locale" content="en_US" />
+  <meta name="og:image" property="og:image" content="/images/og-image.png" />
+  <meta name="og:image:url" property="og:image:url" content="/images/og-image.png" />
+  <meta name="og:image:type" property="og:image:type" content="image/png" />
+  <meta name="og:image:width" property="og:image:width" content="1200" />
+  <meta name="og:image:height" property="og:image:height" content="1200" />
+  <meta name="og:image:alt" property="og:image:alt" content="Codelabs" />
+
+  <meta name="twitter:card" property="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" property="twitter:title" content="Web and Cloud Security" />
+  <meta name="twitter:description" property="twitter:description" content="Labs, homework, and programs should be completed by each student.  For each lab, include screenshots demonstrating completion that include your OdinID somewhere in the capture.  These should be included in your lab notebook" />
+  <meta name="twitter:image" property="twitter:image" content="/images/og-image.png" />
+  <meta name="twitter:url" property="twitter:url" content="https://example.com/cs495/" />
+</head>
+
+<body id="app" is="body-bind" class="loading fullbleed view">
+  <paper-header-panel id="main" mode="standard" main>
+<!--    
+    <div id="mainToolbar" class="paper-header">
+      <div class="site-width layout horizontal">
+        <a href="/">
+          <img src="/images/logo.png" class="logo-devs" alt="Codelabs Logo">
+        </a>
+        <div id="searchbar">
+          <paper-input-container no-label-float>
+            <paper-icon-button prefix icon="search"></paper-icon-button>
+            <label>Search</label>
+            <input is="iron-input" bind-value="{{searchVal}}" on-keydown="onSearchKeyDown">
+          </paper-input-container>
+        </div>
+      </div>
+    </div>
+    
+-->
+    
+    <header id="banner" down>
+      <div class="site-width">
+        <p><img id="logo" src="/images/logopsu.png" width="30" height="40" alt="Portland State University"></p>
+          <div class="banner-description">
+            <div class="banner-meta">
+              <h2>Web and Cloud Security</h2>
+              <p>Labs, homework, and programs should be completed by each student.  For each lab, include screenshots demonstrating completion that include your OdinID somewhere in the capture.  These should be included in your lab notebook</p>
+              
+            </div>
+          </div>
+      </div>
+    </header>
+
+    <main>
+      <div id="filters" class="site-width layout horizontal center justified">
+        <div id="sortby">
+          <paper-tabs selected="0" noink on-iron-activate="sortBy">
+            <paper-tab>A-Z</paper-tab>
+            <paper-tab>Recent</paper-tab>
+            <paper-tab>Duration</paper-tab>
+          </paper-tabs>
+        </div>
+
+        
+        <paper-dropdown-menu
+          label="Choose a class"
+          class="dropdown-filter"
+          no-label-float
+          noink no-animations
+        >
+          <paper-listbox
+            id="eventList"
+            slot="dropdown-content"
+            class="dropdown-content"
+          ><a href="/cs410b/" tabindex="-1">
+                  <paper-item>Blockchain Development and Security</paper-item>
+                </a>
+              <a href="/cs411/" tabindex="-1">
+                  <paper-item>Business Blockchain Fundamentals Lab</paper-item>
+                </a>
+              <a href="/cs430/" tabindex="-1">
+                  <paper-item>Internet, Web, and Cloud Systems</paper-item>
+                </a>
+              <a href="/cs492/" tabindex="-1">
+                  <paper-item>Malware Reverse Engineering</paper-item>
+                </a>
+              <a href="/cs495/" tabindex="-1">
+                  <paper-item>Web and Cloud Security</paper-item>
+                </a>
+              <a href="/vslive/" tabindex="-1">
+                  <paper-item>Visual Studio Live</paper-item>
+                </a>
+              
+          </paper-listbox>
+        </paper-dropdown-menu>
+        <paper-dropdown-menu
+          label="Filter by category"
+          class="dropdown-filter"
+          no-label-float
+          noink no-animations
+        >
+          <paper-listbox
+            id="categorylist"
+            slot="dropdown-content"
+            class="dropdown-content"
+            on-iron-activate="onCategoryActivate"
+            attr-for-selected="filter"
+          >
+              <paper-item filter="Client">Client</paper-item>
+                <paper-item filter="Cloud">Cloud</paper-item>
+                <paper-item filter="Python">Python</paper-item>
+                <paper-item filter="Server">Server</paper-item>
+                <paper-item filter="Setup">Setup</paper-item>
+                <paper-item filter="Tools">Tools</paper-item>
+                
+          </paper-listbox>
+        </paper-dropdown-menu></div>
+
+      <card-sorter id="cards" class="site-width">
+        
+          
+            
+            <a href="/labs/W3.3_csrf/index.html?index=..%2F..cs495" on-tap="navigate"
+               class="codelab-card category-client"
+               data-category="Client,Security"
+               data-title="3.3: CSRF"
+               data-duration="53"
+               data-summary="Leverage cross-site request forgery to exploit vulnerable web applications"
+               data-updated="2022-02-13T18:10:03Z"
+               data-tags="cs495"
+               data-pin="">
+              <div class="description"><h4>3.3: CSRF</h4></div>
+	      <div class="description">Leverage cross-site request forgery to exploit vulnerable web applications</div>
+              <div class="card-duration">
+                <span>53 min </span>
+                <span>Updated Feb 13, 2022</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon client-icon"></div>
+                <paper-button class="client-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/W3.5_insecure_deserialization_php/index.html?index=..%2F..cs495" on-tap="navigate"
+               class="codelab-card category-client"
+               data-category="Client,Security"
+               data-title="3.5: Insecure Deserialization (PHP)"
+               data-duration="44"
+               data-summary="Leverage a deserialization vulnerability to exploit a PHP web application."
+               data-updated="2021-06-09T02:07:15Z"
+               data-tags="cs495"
+               data-pin="">
+              <div class="description"><h4>3.5: Insecure Deserialization (PHP)</h4></div>
+	      <div class="description">Leverage a deserialization vulnerability to exploit a PHP web application.</div>
+              <div class="card-duration">
+                <span>44 min </span>
+                <span>Updated Jun 9, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon client-icon"></div>
+                <paper-button class="client-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/W3.6_insecure_deserialization_nodejs/index.html?index=..%2F..cs495" on-tap="navigate"
+               class="codelab-card category-client"
+               data-category="Client,Security"
+               data-title="3.6: Insecure Deserialization (JavaScript)"
+               data-duration="53"
+               data-summary="Leverage a deserialization vulnerability to exploit a NodeJS web application."
+               data-updated="2022-02-23T04:23:58Z"
+               data-tags="cs495"
+               data-pin="">
+              <div class="description"><h4>3.6: Insecure Deserialization (JavaScript)</h4></div>
+	      <div class="description">Leverage a deserialization vulnerability to exploit a NodeJS web application.</div>
+              <div class="card-duration">
+                <span>53 min </span>
+                <span>Updated Feb 23, 2022</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon client-icon"></div>
+                <paper-button class="client-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/W3.4_clickjacking/index.html?index=..%2F..cs495" on-tap="navigate"
+               class="codelab-card category-client"
+               data-category="Client,Security"
+               data-title="3.4: Clickjacking"
+               data-duration="50"
+               data-summary="Leverage unsolicited framing to exploit vulnerable web applications"
+               data-updated="2022-02-15T16:58:52Z"
+               data-tags="cs495"
+               data-pin="">
+              <div class="description"><h4>3.4: Clickjacking</h4></div>
+	      <div class="description">Leverage unsolicited framing to exploit vulnerable web applications</div>
+              <div class="card-duration">
+                <span>50 min </span>
+                <span>Updated Feb 15, 2022</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon client-icon"></div>
+                <paper-button class="client-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/W3.2_cors_csp/index.html?index=..%2F..cs495" on-tap="navigate"
+               class="codelab-card category-client"
+               data-category="Client,Security"
+               data-title="3.2: CORS, Content Security Policy"
+               data-duration="72"
+               data-summary="Experiment with headers within HTTP that limit XSS vulnerabilities."
+               data-updated="2022-02-16T04:14:52Z"
+               data-tags="cs495"
+               data-pin="">
+              <div class="description"><h4>3.2: CORS, Content Security Policy</h4></div>
+	      <div class="description">Experiment with headers within HTTP that limit XSS vulnerabilities.</div>
+              <div class="card-duration">
+                <span>72 min </span>
+                <span>Updated Feb 16, 2022</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon client-icon"></div>
+                <paper-button class="client-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/W4.7_aws_cloudgoat/index.html?index=..%2F..cs495" on-tap="navigate"
+               class="codelab-card category-cloud"
+               data-category="Cloud,Security"
+               data-title="4.7: CloudGoat"
+               data-duration="73"
+               data-summary="Exploit vulnerable cloud deployments to gain unauthorized access to cloud resources."
+               data-updated="2022-02-23T17:09:38Z"
+               data-tags="cs495"
+               data-pin="">
+              <div class="description"><h4>4.7: CloudGoat</h4></div>
+	      <div class="description">Exploit vulnerable cloud deployments to gain unauthorized access to cloud resources.</div>
+              <div class="card-duration">
+                <span>73 min </span>
+                <span>Updated Feb 23, 2022</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon cloud-icon"></div>
+                <paper-button class="cloud-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/W4.6_aws_serverlessgoat/index.html?index=..%2F..cs495" on-tap="navigate"
+               class="codelab-card category-cloud"
+               data-category="Cloud,Security"
+               data-title="4.6: Serverless Goat"
+               data-duration="68"
+               data-summary="Exploit a serverless application to gain unauthorized access to resources of the account that hosts it."
+               data-updated="2022-02-28T15:29:04Z"
+               data-tags="cs495"
+               data-pin="">
+              <div class="description"><h4>4.6: Serverless Goat</h4></div>
+	      <div class="description">Exploit a serverless application to gain unauthorized access to resources of the account that hosts it.</div>
+              <div class="card-duration">
+                <span>68 min </span>
+                <span>Updated Feb 28, 2022</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon cloud-icon"></div>
+                <paper-button class="cloud-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/W4.5_aws_flaws2/index.html?index=..%2F..cs495" on-tap="navigate"
+               class="codelab-card category-cloud"
+               data-category="Cloud,Security"
+               data-title="4.5: flaws2.cloud"
+               data-duration="73"
+               data-summary="Play attacker and defender roles in the cloud using several vulnerable cloud deployments."
+               data-updated="2022-03-09T15:43:10Z"
+               data-tags="cs495"
+               data-pin="">
+              <div class="description"><h4>4.5: flaws2.cloud</h4></div>
+	      <div class="description">Play attacker and defender roles in the cloud using several vulnerable cloud deployments.</div>
+              <div class="card-duration">
+                <span>73 min </span>
+                <span>Updated Mar 9, 2022</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon cloud-icon"></div>
+                <paper-button class="cloud-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/W4.4_aws_flaws/index.html?index=..%2F..cs495" on-tap="navigate"
+               class="codelab-card category-cloud"
+               data-category="Cloud,Security"
+               data-title="4.4: flaws.cloud"
+               data-duration="77"
+               data-summary="Exploit several vulnerable cloud deployments to gain unauthorized access."
+               data-updated="2022-03-09T08:50:27Z"
+               data-tags="cs495"
+               data-pin="">
+              <div class="description"><h4>4.4: flaws.cloud</h4></div>
+	      <div class="description">Exploit several vulnerable cloud deployments to gain unauthorized access.</div>
+              <div class="card-duration">
+                <span>77 min </span>
+                <span>Updated Mar 9, 2022</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon cloud-icon"></div>
+                <paper-button class="cloud-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/W4.2_gcp_thunderctf/index.html?index=..%2F..cs495" on-tap="navigate"
+               class="codelab-card category-cloud"
+               data-category="Cloud,Security"
+               data-title="4.2: Thunder CTF"
+               data-duration="286"
+               data-summary="Play attacker and defender roles in the cloud using several vulnerable cloud deployments."
+               data-updated="2022-03-09T15:43:48Z"
+               data-tags="cs495"
+               data-pin="">
+              <div class="description"><h4>4.2: Thunder CTF</h4></div>
+	      <div class="description">Play attacker and defender roles in the cloud using several vulnerable cloud deployments.</div>
+              <div class="card-duration">
+                <span>286 min </span>
+                <span>Updated Mar 9, 2022</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon cloud-icon"></div>
+                <paper-button class="cloud-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/W1.2_webprogramming/index.html?index=..%2F..cs495" on-tap="navigate"
+               class="codelab-card category-python"
+               data-category="Python,Client,Security,Wk01"
+               data-title="1.2: Web Programming"
+               data-duration="48"
+               data-summary="Use Python to efficiently access a collection of web sites"
+               data-updated="2022-01-12T22:36:16Z"
+               data-tags="cs495"
+               data-pin="">
+              <div class="description"><h4>1.2: Web Programming</h4></div>
+	      <div class="description">Use Python to efficiently access a collection of web sites</div>
+              <div class="card-duration">
+                <span>48 min </span>
+                <span>Updated Jan 12, 2022</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon python-icon"></div>
+                <paper-button class="python-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/W2.2_hw2/index.html?index=..%2F..cs495" on-tap="navigate"
+               class="codelab-card category-python"
+               data-category="Python,Server,Security,Wk04"
+               data-title="2.2: HW2 (conditional-responses)"
+               data-duration="161"
+               data-summary="Write a program to perform Blind SQL injection using binary search"
+               data-updated="2021-04-26T14:10:03Z"
+               data-tags="cs495"
+               data-pin="">
+              <div class="description"><h4>2.2: HW2 (conditional-responses)</h4></div>
+	      <div class="description">Write a program to perform Blind SQL injection using binary search</div>
+              <div class="card-duration">
+                <span>161 min </span>
+                <span>Updated Apr 26, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon python-icon"></div>
+                <paper-button class="python-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/W1.4_hw1/index.html?index=..%2F..cs495" on-tap="navigate"
+               class="codelab-card category-python"
+               data-category="Python,Homework,Wk02,Server,Security"
+               data-title="1.4: HW1 (2fa-bypass-using-a-brute-force-attack)"
+               data-duration="137"
+               data-summary="Write a program to brute-force a vulnerable 2FA process"
+               data-updated="2022-01-21T14:50:59Z"
+               data-tags="cs495"
+               data-pin="">
+              <div class="description"><h4>1.4: HW1 (2fa-bypass-using-a-brute-force-attack)</h4></div>
+	      <div class="description">Write a program to brute-force a vulnerable 2FA process</div>
+              <div class="card-duration">
+                <span>137 min </span>
+                <span>Updated Jan 21, 2022</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon python-icon"></div>
+                <paper-button class="python-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/W2.1_cmd_sql_injection/index.html?index=..%2F..cs495" on-tap="navigate"
+               class="codelab-card category-server"
+               data-category="Server,Security,Wk04"
+               data-title="2.1: Command and SQL injection"
+               data-duration="55"
+               data-summary="Leverage command and SQL injection to exploit web applications"
+               data-updated="2021-10-01T02:41:42Z"
+               data-tags="cs495"
+               data-pin="">
+              <div class="description"><h4>2.1: Command and SQL injection</h4></div>
+	      <div class="description">Leverage command and SQL injection to exploit web applications</div>
+              <div class="card-duration">
+                <span>55 min </span>
+                <span>Updated Oct 1, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon server-icon"></div>
+                <paper-button class="server-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/W1.5_broken_access_control/index.html?index=..%2F..cs495" on-tap="navigate"
+               class="codelab-card category-server"
+               data-category="Server,Security,Wk03"
+               data-title="1.5: Broken Access Control"
+               data-duration="123"
+               data-summary="Leverage access control vulnerabilities to exploit vulnerable web sites"
+               data-updated="2022-01-13T00:59:21Z"
+               data-tags="cs495"
+               data-pin="">
+              <div class="description"><h4>1.5: Broken Access Control</h4></div>
+	      <div class="description">Leverage access control vulnerabilities to exploit vulnerable web sites</div>
+              <div class="card-duration">
+                <span>123 min </span>
+                <span>Updated Jan 13, 2022</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon server-icon"></div>
+                <paper-button class="server-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/W1.3_broken_authentication/index.html?index=..%2F..cs495" on-tap="navigate"
+               class="codelab-card category-server"
+               data-category="Server,Security,Wk02"
+               data-title="1.3: Broken Authentication"
+               data-duration="70"
+               data-summary="Leverage authentication vulnerabilities to gain unauthorized access to sites."
+               data-updated="2022-01-24T00:16:05Z"
+               data-tags="cs495"
+               data-pin="">
+              <div class="description"><h4>1.3: Broken Authentication</h4></div>
+	      <div class="description">Leverage authentication vulnerabilities to gain unauthorized access to sites.</div>
+              <div class="card-duration">
+                <span>70 min </span>
+                <span>Updated Jan 24, 2022</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon server-icon"></div>
+                <paper-button class="server-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/W1.6_ssrf/index.html?index=..%2F..cs495" on-tap="navigate"
+               class="codelab-card category-server"
+               data-category="Server,Security,Wk03"
+               data-title="1.6: SSRF"
+               data-duration="23"
+               data-summary="Leverage server-side request forgery to exploit vulnerable web applications"
+               data-updated="2021-06-21T14:20:25Z"
+               data-tags="cs495"
+               data-pin="">
+              <div class="description"><h4>1.6: SSRF</h4></div>
+	      <div class="description">Leverage server-side request forgery to exploit vulnerable web applications</div>
+              <div class="card-duration">
+                <span>23 min </span>
+                <span>Updated Jun 21, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon server-icon"></div>
+                <paper-button class="server-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/W1.7_xxe/index.html?index=..%2F..cs495" on-tap="navigate"
+               class="codelab-card category-server"
+               data-category="Server,Security,Wk03"
+               data-title="1.7: XXE"
+               data-duration="35"
+               data-summary="Leverage XML eXternal Entities to exploit vulnerable web applications"
+               data-updated="2022-03-09T23:59:02Z"
+               data-tags="cs495"
+               data-pin="">
+              <div class="description"><h4>1.7: XXE</h4></div>
+	      <div class="description">Leverage XML eXternal Entities to exploit vulnerable web applications</div>
+              <div class="card-duration">
+                <span>35 min </span>
+                <span>Updated Mar 9, 2022</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon server-icon"></div>
+                <paper-button class="server-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/W1.1_setup/index.html?index=..%2F..cs495" on-tap="navigate"
+               class="codelab-card category-setup"
+               data-category="Setup,Security,Wk01"
+               data-title="1.1: Setup"
+               data-duration="76"
+               data-summary="Setup the accounts and virtual machines for use in this course."
+               data-updated="2022-01-20T00:54:07Z"
+               data-tags="cs495"
+               data-pin="">
+              <div class="description"><h4>1.1: Setup</h4></div>
+	      <div class="description">Setup the accounts and virtual machines for use in this course.</div>
+              <div class="card-duration">
+                <span>76 min </span>
+                <span>Updated Jan 20, 2022</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon setup-icon"></div>
+                <paper-button class="setup-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/W5.1_tools_setup/index.html?index=..%2F..cs495" on-tap="navigate"
+               class="codelab-card category-tools"
+               data-category="Tools,Security"
+               data-title="5.1: Tools setup"
+               data-duration="63"
+               data-summary="Setup Kali VMs and web servers to practice using tools that automate reconnaissance, scanning, and exploitation."
+               data-updated="2022-03-09T21:44:34Z"
+               data-tags="cs495"
+               data-pin="">
+              <div class="description"><h4>5.1: Tools setup</h4></div>
+	      <div class="description">Setup Kali VMs and web servers to practice using tools that automate reconnaissance, scanning, and exploitation.</div>
+              <div class="card-duration">
+                <span>63 min </span>
+                <span>Updated Mar 9, 2022</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon tools-icon"></div>
+                <paper-button class="tools-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/W5.3_discovery1/index.html?index=..%2F..cs495" on-tap="navigate"
+               class="codelab-card category-tools"
+               data-category="Tools,Security"
+               data-title="5.3: Discovery tools (Pt 1)"
+               data-duration="47"
+               data-summary="Actively discover potential targets using wfuzz, nmap, and bucket-stream"
+               data-updated="2022-01-18T19:42:39Z"
+               data-tags="cs495"
+               data-pin="">
+              <div class="description"><h4>5.3: Discovery tools (Pt 1)</h4></div>
+	      <div class="description">Actively discover potential targets using wfuzz, nmap, and bucket-stream</div>
+              <div class="card-duration">
+                <span>47 min </span>
+                <span>Updated Jan 18, 2022</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon tools-icon"></div>
+                <paper-button class="tools-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/W5.4_discovery2/index.html?index=..%2F..cs495" on-tap="navigate"
+               class="codelab-card category-tools"
+               data-category="Tools,Security"
+               data-title="5.4: Discovery tools (Pt 2)"
+               data-duration="42"
+               data-summary="Scan WordPress sites for vulnerabilities automatically with wpscan"
+               data-updated="2022-03-10T01:51:01Z"
+               data-tags="cs495"
+               data-pin="">
+              <div class="description"><h4>5.4: Discovery tools (Pt 2)</h4></div>
+	      <div class="description">Scan WordPress sites for vulnerabilities automatically with wpscan</div>
+              <div class="card-duration">
+                <span>42 min </span>
+                <span>Updated Mar 10, 2022</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon tools-icon"></div>
+                <paper-button class="tools-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/W5.5_exploit1/index.html?index=..%2F..cs495" on-tap="navigate"
+               class="codelab-card category-tools"
+               data-category="Tools,Security"
+               data-title="5.5: Exploitation tools (Pt 1)"
+               data-duration="25"
+               data-summary="Exploit targets using hydra, sqlmap, xsstrike, commix"
+               data-updated="2022-01-14T17:26:40Z"
+               data-tags="cs495"
+               data-pin="">
+              <div class="description"><h4>5.5: Exploitation tools (Pt 1)</h4></div>
+	      <div class="description">Exploit targets using hydra, sqlmap, xsstrike, commix</div>
+              <div class="card-duration">
+                <span>25 min </span>
+                <span>Updated Jan 14, 2022</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon tools-icon"></div>
+                <paper-button class="tools-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/W5.6_exploit2/index.html?index=..%2F..cs495" on-tap="navigate"
+               class="codelab-card category-tools"
+               data-category="Tools,Security"
+               data-title="5.6: Exploitation tools (Pt 2)"
+               data-duration="27"
+               data-summary="Exploit a target using Metasploit"
+               data-updated="2022-01-14T17:28:20Z"
+               data-tags="cs495"
+               data-pin="">
+              <div class="description"><h4>5.6: Exploitation tools (Pt 2)</h4></div>
+	      <div class="description">Exploit a target using Metasploit</div>
+              <div class="card-duration">
+                <span>27 min </span>
+                <span>Updated Jan 14, 2022</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon tools-icon"></div>
+                <paper-button class="tools-bg">Start</paper-button>
+              </div>
+            </a>
+          
+      </card-sorter>
+
+      <div id="loading-placeholder" class="site-width">
+        Loading Codelabs, please wait...
+      </div>
+    </main>
+
+  </paper-header-panel>
+
+  <script src="/scripts/main.js"></script>
+</body>
+</html>

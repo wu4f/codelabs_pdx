@@ -1,0 +1,334 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="The labs below should be completed by each student.  For each lab, include screenshots demonstrating completion that include your OdinID somewhere in the capture.  These should be included in your lab notebook">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Business Blockchain Fundamentals Lab">
+  <meta name="application-name" content="Business Blockchain Fundamentals Lab">
+  <link rel="canonical" href="https://example.com/cs411/" />
+  <link rel="preconnect" href="https://www.google-analytics.com" />
+
+  <script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-49880327-14', 'auto');
+    ga('send', 'pageview');
+    
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  <title>Business Blockchain Fundamentals Lab</title>
+
+  <link rel="stylesheet" href="/styles/main.css">
+
+  <link rel="import" href="/elements/elements.html">
+
+  <style is="custom-style">
+    :root {
+      --paper-tabs-selection-bar-color: currentcolor;
+      --paper-input-container-underline: {
+        display: none;
+      };
+      --paper-input-container-underline-focus: {
+        display: none;
+      };
+    }
+
+    .dropdown-filter {
+      --paper-input-container: {
+        padding: 8px;
+      }
+    }
+  </style>
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#455a64">
+  <meta name="apple-mobile-web-app-title" content="Business Blockchain Fundamentals Lab">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="194x194" href="/images/favicons/favicon-194x194.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicons/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#455a64">
+  <meta name="msapplication-TileColor" content="#455a64">
+  <meta name="msapplication-TileImage" content="/images/favicons/mstile-144x144.png">
+  <meta name="theme-color" content="#455a64">
+
+  <meta name="og:type" property="og:type" content="website" />
+  <meta name="og:title" property="og:title" content="Business Blockchain Fundamentals Lab" />
+  <meta name="og:description" property="og:description" content="The labs below should be completed by each student.  For each lab, include screenshots demonstrating completion that include your OdinID somewhere in the capture.  These should be included in your lab notebook" />
+  <meta name="og:url" property="og:url" content="https://example.com/cs411/" />
+  <meta name="og:site_name" property="og:site_name" content="Codelabs" />
+  <meta name="og:determiner" property="og:determiner" content="the" />
+  <meta name="og:locale" property="og:locale" content="en_US" />
+  <meta name="og:image" property="og:image" content="/images/og-image.png" />
+  <meta name="og:image:url" property="og:image:url" content="/images/og-image.png" />
+  <meta name="og:image:type" property="og:image:type" content="image/png" />
+  <meta name="og:image:width" property="og:image:width" content="1200" />
+  <meta name="og:image:height" property="og:image:height" content="1200" />
+  <meta name="og:image:alt" property="og:image:alt" content="Codelabs" />
+
+  <meta name="twitter:card" property="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" property="twitter:title" content="Business Blockchain Fundamentals Lab" />
+  <meta name="twitter:description" property="twitter:description" content="The labs below should be completed by each student.  For each lab, include screenshots demonstrating completion that include your OdinID somewhere in the capture.  These should be included in your lab notebook" />
+  <meta name="twitter:image" property="twitter:image" content="/images/og-image.png" />
+  <meta name="twitter:url" property="twitter:url" content="https://example.com/cs411/" />
+</head>
+
+<body id="app" is="body-bind" class="loading fullbleed view">
+  <paper-header-panel id="main" mode="standard" main>
+<!--    
+    <div id="mainToolbar" class="paper-header">
+      <div class="site-width layout horizontal">
+        <a href="/">
+          <img src="/images/logo.png" class="logo-devs" alt="Codelabs Logo">
+        </a>
+        <div id="searchbar">
+          <paper-input-container no-label-float>
+            <paper-icon-button prefix icon="search"></paper-icon-button>
+            <label>Search</label>
+            <input is="iron-input" bind-value="{{searchVal}}" on-keydown="onSearchKeyDown">
+          </paper-input-container>
+        </div>
+      </div>
+    </div>
+    
+-->
+    
+    <header id="banner" down>
+      <div class="site-width">
+        <p><img id="logo" src="/images/logopsu.png" width="30" height="40" alt="Portland State University"></p>
+          <div class="banner-description">
+            <div class="banner-meta">
+              <h2>Business Blockchain Fundamentals Lab</h2>
+              <p>The labs below should be completed by each student.  For each lab, include screenshots demonstrating completion that include your OdinID somewhere in the capture.  These should be included in your lab notebook</p>
+              
+            </div>
+          </div>
+      </div>
+    </header>
+
+    <main>
+      <div id="filters" class="site-width layout horizontal center justified">
+        <div id="sortby">
+          <paper-tabs selected="0" noink on-iron-activate="sortBy">
+            <paper-tab>A-Z</paper-tab>
+            <paper-tab>Recent</paper-tab>
+            <paper-tab>Duration</paper-tab>
+          </paper-tabs>
+        </div>
+
+        
+        <paper-dropdown-menu
+          label="Choose a class"
+          class="dropdown-filter"
+          no-label-float
+          noink no-animations
+        >
+          <paper-listbox
+            id="eventList"
+            slot="dropdown-content"
+            class="dropdown-content"
+          ><a href="/cs410b/" tabindex="-1">
+                  <paper-item>Blockchain Development and Security</paper-item>
+                </a>
+              <a href="/cs411/" tabindex="-1">
+                  <paper-item>Business Blockchain Fundamentals Lab</paper-item>
+                </a>
+              <a href="/cs430/" tabindex="-1">
+                  <paper-item>Internet, Web, and Cloud Systems</paper-item>
+                </a>
+              <a href="/cs492/" tabindex="-1">
+                  <paper-item>Malware Reverse Engineering</paper-item>
+                </a>
+              <a href="/cs495/" tabindex="-1">
+                  <paper-item>Web and Cloud Security</paper-item>
+                </a>
+              <a href="/vslive/" tabindex="-1">
+                  <paper-item>Visual Studio Live</paper-item>
+                </a>
+              
+          </paper-listbox>
+        </paper-dropdown-menu>
+        <paper-dropdown-menu
+          label="Filter by category"
+          class="dropdown-filter"
+          no-label-float
+          noink no-animations
+        >
+          <paper-listbox
+            id="categorylist"
+            slot="dropdown-content"
+            class="dropdown-content"
+            on-iron-activate="onCategoryActivate"
+            attr-for-selected="filter"
+          >
+              <paper-item filter="Ethereum">Ethereum</paper-item>
+                <paper-item filter="Security">Security</paper-item>
+                <paper-item filter="Solidity">Solidity</paper-item>
+                
+          </paper-listbox>
+        </paper-dropdown-menu></div>
+
+      <card-sorter id="cards" class="site-width">
+        
+          
+            
+            <a href="/labs/B2.1_metamask_sictf/index.html?index=..%2F..cs411" on-tap="navigate"
+               class="codelab-card category-ethereum"
+               data-category="Ethereum,Solidity"
+               data-title="2.1: Metamask and CTF Setup"
+               data-duration="37"
+               data-summary="Install Metamask in your browser to set up a wallet.  Use it to sign up for a Security Innovation CTF account"
+               data-updated="2021-09-17T14:30:31Z"
+               data-tags="blockchain,cs410,cs411"
+               data-pin="">
+              <div class="description"><h4>2.1: Metamask and CTF Setup</h4></div>
+	      <div class="description">Install Metamask in your browser to set up a wallet.  Use it to sign up for a Security Innovation CTF account</div>
+              <div class="card-duration">
+                <span>37 min </span>
+                <span>Updated Sep 17, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon ethereum-icon"></div>
+                <paper-button class="ethereum-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B3.1_sictf_donation_lockbox/index.html?index=..%2F..cs411" on-tap="navigate"
+               class="codelab-card category-security"
+               data-category="Security,Ethereum"
+               data-title="3.1: D0 Donation, D6 Lockbox"
+               data-duration="60"
+               data-summary="Navigate and solve the initial levels of the Security Innovation CTF"
+               data-updated="2021-11-02T20:16:10Z"
+               data-tags="blockchain,cs410,cs411"
+               data-pin="">
+              <div class="description"><h4>3.1: D0 Donation, D6 Lockbox</h4></div>
+	      <div class="description">Navigate and solve the initial levels of the Security Innovation CTF</div>
+              <div class="card-duration">
+                <span>60 min </span>
+                <span>Updated Nov 2, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon security-icon"></div>
+                <paper-button class="security-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B3.3_sictf_tokensale/index.html?index=..%2F..cs411" on-tap="navigate"
+               class="codelab-card category-security"
+               data-category="Security,Ethereum"
+               data-title="3.3: D3 TokenSale"
+               data-duration="43"
+               data-summary="Exploit arithmetic issues in smart contracts on Security Innovation&#39;s CTF"
+               data-updated="2021-11-02T20:07:58Z"
+               data-tags="blockchain,cs410,cs411"
+               data-pin="">
+              <div class="description"><h4>3.3: D3 TokenSale</h4></div>
+	      <div class="description">Exploit arithmetic issues in smart contracts on Security Innovation&#39;s CTF</div>
+              <div class="card-duration">
+                <span>43 min </span>
+                <span>Updated Nov 2, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon security-icon"></div>
+                <paper-button class="security-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B2.2_solidity_cryptozombies/index.html?index=..%2F..cs411" on-tap="navigate"
+               class="codelab-card category-solidity"
+               data-category="Solidity,Ethereum"
+               data-title="2.2: Solidity With CryptoZombies"
+               data-duration="69"
+               data-summary="Learn the basics of Solidity programming using a collectible game modeled after CryptoKitties by Loom"
+               data-updated="2020-11-04T02:31:29Z"
+               data-tags="blockchain,cs410,cs411"
+               data-pin="">
+              <div class="description"><h4>2.2: Solidity With CryptoZombies</h4></div>
+	      <div class="description">Learn the basics of Solidity programming using a collectible game modeled after CryptoKitties by Loom</div>
+              <div class="card-duration">
+                <span>69 min </span>
+                <span>Updated Nov 4, 2020</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon solidity-icon"></div>
+                <paper-button class="solidity-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B2.3_solidity_remix/index.html?index=..%2F..cs411" on-tap="navigate"
+               class="codelab-card category-solidity"
+               data-category="Solidity,Ethereum"
+               data-title="2.3: Solidity, Remix, MyCrypto, Etherscan"
+               data-duration="35"
+               data-summary="Learn the basics of deploying, interacting, and debugging Solidity smart contracts using the Remix IDE, MyCrypto, and Etherscan."
+               data-updated="2021-10-19T16:25:24Z"
+               data-tags="blockchain,cs410,cs411"
+               data-pin="">
+              <div class="description"><h4>2.3: Solidity, Remix, MyCrypto, Etherscan</h4></div>
+	      <div class="description">Learn the basics of deploying, interacting, and debugging Solidity smart contracts using the Remix IDE, MyCrypto, and Etherscan.</div>
+              <div class="card-duration">
+                <span>35 min </span>
+                <span>Updated Oct 19, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon solidity-icon"></div>
+                <paper-button class="solidity-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B2.4_smartcontracts/index.html?index=..%2F..cs411" on-tap="navigate"
+               class="codelab-card category-solidity"
+               data-category="Solidity,Ethereum"
+               data-title="2.4: Solidity Smart Contracts on Ethereum"
+               data-duration="117"
+               data-summary="Develop, deploy, and interact with several smart contracts"
+               data-updated="2021-09-17T15:08:15Z"
+               data-tags="blockchain,cs410,cs411"
+               data-pin="">
+              <div class="description"><h4>2.4: Solidity Smart Contracts on Ethereum</h4></div>
+	      <div class="description">Develop, deploy, and interact with several smart contracts</div>
+              <div class="card-duration">
+                <span>117 min </span>
+                <span>Updated Sep 17, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon solidity-icon"></div>
+                <paper-button class="solidity-bg">Start</paper-button>
+              </div>
+            </a>
+          
+      </card-sorter>
+
+      <div id="loading-placeholder" class="site-width">
+        Loading Codelabs, please wait...
+      </div>
+    </main>
+
+  </paper-header-panel>
+
+  <script src="/scripts/main.js"></script>
+</body>
+</html>

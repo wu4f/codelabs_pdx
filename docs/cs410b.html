@@ -1,0 +1,844 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="The labs below should be completed by each student.  For each lab, include screenshots demonstrating completion that include your OdinID somewhere in the capture.  These should be included in your lab notebook. Read more about these codelabs at https://edu.google.com/why-google/case-studies/portland-state-cybersecurity-cloud">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Blockchain Development and Security">
+  <meta name="application-name" content="Blockchain Development and Security">
+  <link rel="canonical" href="https://example.com/cs410b/" />
+  <link rel="preconnect" href="https://www.google-analytics.com" />
+
+  <script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-49880327-14', 'auto');
+    ga('send', 'pageview');
+    
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  <title>Blockchain Development and Security</title>
+
+  <link rel="stylesheet" href="/styles/main.css">
+
+  <link rel="import" href="/elements/elements.html">
+
+  <style is="custom-style">
+    :root {
+      --paper-tabs-selection-bar-color: currentcolor;
+      --paper-input-container-underline: {
+        display: none;
+      };
+      --paper-input-container-underline-focus: {
+        display: none;
+      };
+    }
+
+    .dropdown-filter {
+      --paper-input-container: {
+        padding: 8px;
+      }
+    }
+  </style>
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#455a64">
+  <meta name="apple-mobile-web-app-title" content="Blockchain Development and Security">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="194x194" href="/images/favicons/favicon-194x194.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicons/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#455a64">
+  <meta name="msapplication-TileColor" content="#455a64">
+  <meta name="msapplication-TileImage" content="/images/favicons/mstile-144x144.png">
+  <meta name="theme-color" content="#455a64">
+
+  <meta name="og:type" property="og:type" content="website" />
+  <meta name="og:title" property="og:title" content="Blockchain Development and Security" />
+  <meta name="og:description" property="og:description" content="The labs below should be completed by each student.  For each lab, include screenshots demonstrating completion that include your OdinID somewhere in the capture.  These should be included in your lab notebook. Read more about these codelabs at https://edu.google.com/why-google/case-studies/portland-state-cybersecurity-cloud" />
+  <meta name="og:url" property="og:url" content="https://example.com/cs410b/" />
+  <meta name="og:site_name" property="og:site_name" content="Codelabs" />
+  <meta name="og:determiner" property="og:determiner" content="the" />
+  <meta name="og:locale" property="og:locale" content="en_US" />
+  <meta name="og:image" property="og:image" content="/images/og-image.png" />
+  <meta name="og:image:url" property="og:image:url" content="/images/og-image.png" />
+  <meta name="og:image:type" property="og:image:type" content="image/png" />
+  <meta name="og:image:width" property="og:image:width" content="1200" />
+  <meta name="og:image:height" property="og:image:height" content="1200" />
+  <meta name="og:image:alt" property="og:image:alt" content="Codelabs" />
+
+  <meta name="twitter:card" property="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" property="twitter:title" content="Blockchain Development and Security" />
+  <meta name="twitter:description" property="twitter:description" content="The labs below should be completed by each student.  For each lab, include screenshots demonstrating completion that include your OdinID somewhere in the capture.  These should be included in your lab notebook. Read more about these codelabs at https://edu.google.com/why-google/case-studies/portland-state-cybersecurity-cloud" />
+  <meta name="twitter:image" property="twitter:image" content="/images/og-image.png" />
+  <meta name="twitter:url" property="twitter:url" content="https://example.com/cs410b/" />
+</head>
+
+<body id="app" is="body-bind" class="loading fullbleed view">
+  <paper-header-panel id="main" mode="standard" main>
+<!--    
+    <div id="mainToolbar" class="paper-header">
+      <div class="site-width layout horizontal">
+        <a href="/">
+          <img src="/images/logo.png" class="logo-devs" alt="Codelabs Logo">
+        </a>
+        <div id="searchbar">
+          <paper-input-container no-label-float>
+            <paper-icon-button prefix icon="search"></paper-icon-button>
+            <label>Search</label>
+            <input is="iron-input" bind-value="{{searchVal}}" on-keydown="onSearchKeyDown">
+          </paper-input-container>
+        </div>
+      </div>
+    </div>
+    
+-->
+    
+    <header id="banner" down>
+      <div class="site-width">
+        <p><img id="logo" src="/images/logopsu.png" width="30" height="40" alt="Portland State University"></p>
+          <div class="banner-description">
+            <div class="banner-meta">
+              <h2>Blockchain Development and Security</h2>
+              <p>The labs below should be completed by each student.  For each lab, include screenshots demonstrating completion that include your OdinID somewhere in the capture.  These should be included in your lab notebook. Read more about these codelabs at https://edu.google.com/why-google/case-studies/portland-state-cybersecurity-cloud</p>
+              
+            </div>
+          </div>
+      </div>
+    </header>
+
+    <main>
+      <div id="filters" class="site-width layout horizontal center justified">
+        <div id="sortby">
+          <paper-tabs selected="0" noink on-iron-activate="sortBy">
+            <paper-tab>A-Z</paper-tab>
+            <paper-tab>Recent</paper-tab>
+            <paper-tab>Duration</paper-tab>
+          </paper-tabs>
+        </div>
+
+        
+        <paper-dropdown-menu
+          label="Choose a class"
+          class="dropdown-filter"
+          no-label-float
+          noink no-animations
+        >
+          <paper-listbox
+            id="eventList"
+            slot="dropdown-content"
+            class="dropdown-content"
+          ><a href="/cs410b/" tabindex="-1">
+                  <paper-item>Blockchain Development and Security</paper-item>
+                </a>
+              <a href="/cs411/" tabindex="-1">
+                  <paper-item>Business Blockchain Fundamentals Lab</paper-item>
+                </a>
+              <a href="/cs430/" tabindex="-1">
+                  <paper-item>Internet, Web, and Cloud Systems</paper-item>
+                </a>
+              <a href="/cs492/" tabindex="-1">
+                  <paper-item>Malware Reverse Engineering</paper-item>
+                </a>
+              <a href="/cs495/" tabindex="-1">
+                  <paper-item>Web and Cloud Security</paper-item>
+                </a>
+              <a href="/vslive/" tabindex="-1">
+                  <paper-item>Visual Studio Live</paper-item>
+                </a>
+              
+          </paper-listbox>
+        </paper-dropdown-menu>
+        <paper-dropdown-menu
+          label="Filter by category"
+          class="dropdown-filter"
+          no-label-float
+          noink no-animations
+        >
+          <paper-listbox
+            id="categorylist"
+            slot="dropdown-content"
+            class="dropdown-content"
+            on-iron-activate="onCategoryActivate"
+            attr-for-selected="filter"
+          >
+              <paper-item filter="Ethereum">Ethereum</paper-item>
+                <paper-item filter="Manticore">Manticore</paper-item>
+                <paper-item filter="Sawtooth">Sawtooth</paper-item>
+                <paper-item filter="Security">Security</paper-item>
+                <paper-item filter="Setup">Setup</paper-item>
+                <paper-item filter="Solidity">Solidity</paper-item>
+                <paper-item filter="Vyper">Vyper</paper-item>
+                
+          </paper-listbox>
+        </paper-dropdown-menu></div>
+
+      <card-sorter id="cards" class="site-width">
+        
+          
+            
+            <a href="/labs/B2.1_metamask_sictf/index.html?index=..%2F..cs410b" on-tap="navigate"
+               class="codelab-card category-ethereum"
+               data-category="Ethereum,Solidity"
+               data-title="2.1: Metamask and CTF Setup"
+               data-duration="37"
+               data-summary="Install Metamask in your browser to set up a wallet.  Use it to sign up for a Security Innovation CTF account"
+               data-updated="2021-09-17T14:30:31Z"
+               data-tags="blockchain,cs410,cs411"
+               data-pin="">
+              <div class="description"><h4>2.1: Metamask and CTF Setup</h4></div>
+	      <div class="description">Install Metamask in your browser to set up a wallet.  Use it to sign up for a Security Innovation CTF account</div>
+              <div class="card-duration">
+                <span>37 min </span>
+                <span>Updated Sep 17, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon ethereum-icon"></div>
+                <paper-button class="ethereum-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B5.5_manticore_lottery/index.html?index=..%2F..cs410b" on-tap="navigate"
+               class="codelab-card category-manticore"
+               data-category="Manticore,Ethereum"
+               data-title="5.5: Manticore Lottery"
+               data-duration="32"
+               data-summary="Use symbolic execution to automatically solve the Lottery CTF level"
+               data-updated="2020-11-19T03:16:51Z"
+               data-tags="blockchain,cs410"
+               data-pin="">
+              <div class="description"><h4>5.5: Manticore Lottery</h4></div>
+	      <div class="description">Use symbolic execution to automatically solve the Lottery CTF level</div>
+              <div class="card-duration">
+                <span>32 min </span>
+                <span>Updated Nov 19, 2020</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon manticore-icon"></div>
+                <paper-button class="manticore-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B5.3_manticore_piggybank/index.html?index=..%2F..cs410b" on-tap="navigate"
+               class="codelab-card category-manticore"
+               data-category="Manticore,Ethereum"
+               data-title="5.3: Manticore PiggyBank"
+               data-duration="20"
+               data-summary="Use symbolic execution to automatically solve the PiggyBank CTF level"
+               data-updated="2021-11-23T18:49:20Z"
+               data-tags="blockchain,cs410"
+               data-pin="">
+              <div class="description"><h4>5.3: Manticore PiggyBank</h4></div>
+	      <div class="description">Use symbolic execution to automatically solve the PiggyBank CTF level</div>
+              <div class="card-duration">
+                <span>20 min </span>
+                <span>Updated Nov 23, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon manticore-icon"></div>
+                <paper-button class="manticore-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B5.1_manticore_geth/index.html?index=..%2F..cs410b" on-tap="navigate"
+               class="codelab-card category-manticore"
+               data-category="Manticore,Ethereum"
+               data-title="5.1:  Manticore, geth setup"
+               data-duration="12"
+               data-summary="Run an Ethereum full node and a symbolic execution engine on a VM in Google Cloud."
+               data-updated="2021-12-01T03:39:27Z"
+               data-tags="blockchain,cs410"
+               data-pin="">
+              <div class="description"><h4>5.1:  Manticore, geth setup</h4></div>
+	      <div class="description">Run an Ethereum full node and a symbolic execution engine on a VM in Google Cloud.</div>
+              <div class="card-duration">
+                <span>12 min </span>
+                <span>Updated Dec 1, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon manticore-icon"></div>
+                <paper-button class="manticore-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B5.6_manticore_trustfund/index.html?index=..%2F..cs410b" on-tap="navigate"
+               class="codelab-card category-manticore"
+               data-category="Manticore,Ethereum"
+               data-title="5.6: Manticore TrustFund"
+               data-duration="72"
+               data-summary="Use symbolic execution to automatically exploit re-entrancy in the TrustFund CTF level"
+               data-updated="2020-12-01T16:11:21Z"
+               data-tags="blockchain,cs410"
+               data-pin="">
+              <div class="description"><h4>5.6: Manticore TrustFund</h4></div>
+	      <div class="description">Use symbolic execution to automatically exploit re-entrancy in the TrustFund CTF level</div>
+              <div class="card-duration">
+                <span>72 min </span>
+                <span>Updated Dec 1, 2020</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon manticore-icon"></div>
+                <paper-button class="manticore-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B5.4_manticore_lockbox/index.html?index=..%2F..cs410b" on-tap="navigate"
+               class="codelab-card category-manticore"
+               data-category="Manticore,Ethereum"
+               data-title="5.4: Manticore Lockbox"
+               data-duration="22"
+               data-summary="Use symbolic execution to automatically solve the Lockbox CTF level"
+               data-updated="2020-11-19T03:14:25Z"
+               data-tags="blockchain,cs410"
+               data-pin="">
+              <div class="description"><h4>5.4: Manticore Lockbox</h4></div>
+	      <div class="description">Use symbolic execution to automatically solve the Lockbox CTF level</div>
+              <div class="card-duration">
+                <span>22 min </span>
+                <span>Updated Nov 19, 2020</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon manticore-icon"></div>
+                <paper-button class="manticore-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B5.2_manticore_donation/index.html?index=..%2F..cs410b" on-tap="navigate"
+               class="codelab-card category-manticore"
+               data-category="Manticore,Ethereum"
+               data-title="5.2: Manticore Donation"
+               data-duration="25"
+               data-summary="Use symbolic execution to solve the Donation CTF level"
+               data-updated="2021-11-22T02:50:29Z"
+               data-tags="blockchain,cs410"
+               data-pin="">
+              <div class="description"><h4>5.2: Manticore Donation</h4></div>
+	      <div class="description">Use symbolic execution to solve the Donation CTF level</div>
+              <div class="card-duration">
+                <span>25 min </span>
+                <span>Updated Nov 22, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon manticore-icon"></div>
+                <paper-button class="manticore-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B1.3_sawtooth_processor/index.html?index=..%2F..cs410b" on-tap="navigate"
+               class="codelab-card category-sawtooth"
+               data-category="Sawtooth,Web"
+               data-title="1.3: Sawtooth: Processing Transactions"
+               data-duration="88"
+               data-summary="Construct and deploy the backend transaction processor on Hyperledger Sawtooth that was used in the previous two labs"
+               data-updated="2021-10-16T12:17:45Z"
+               data-tags="blockchain,cs410"
+               data-pin="">
+              <div class="description"><h4>1.3: Sawtooth: Processing Transactions</h4></div>
+	      <div class="description">Construct and deploy the backend transaction processor on Hyperledger Sawtooth that was used in the previous two labs</div>
+              <div class="card-duration">
+                <span>88 min </span>
+                <span>Updated Oct 16, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon sawtooth-icon"></div>
+                <paper-button class="sawtooth-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B1.2_sawtooth_webui/index.html?index=..%2F..cs410b" on-tap="navigate"
+               class="codelab-card category-sawtooth"
+               data-category="Sawtooth,Web"
+               data-title="1.2: Sawtooth: Web Application"
+               data-duration="35"
+               data-summary="Build on the previous lab by constructing a web interface for interacting with a deployed Hyperledger Sawtooth blockchain using Python/Flask"
+               data-updated="2021-10-16T12:17:32Z"
+               data-tags="blockchain,cs410"
+               data-pin="">
+              <div class="description"><h4>1.2: Sawtooth: Web Application</h4></div>
+	      <div class="description">Build on the previous lab by constructing a web interface for interacting with a deployed Hyperledger Sawtooth blockchain using Python/Flask</div>
+              <div class="card-duration">
+                <span>35 min </span>
+                <span>Updated Oct 16, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon sawtooth-icon"></div>
+                <paper-button class="sawtooth-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B1.1_sawtooth_sendxact/index.html?index=..%2F..cs410b" on-tap="navigate"
+               class="codelab-card category-sawtooth"
+               data-category="Sawtooth,Web"
+               data-title="1.1: Sawtooth: Sending Transactions"
+               data-duration="77"
+               data-summary="Interact with a deployed Hyperledger Sawtooth blockchain using Python"
+               data-updated="2021-10-16T12:17:12Z"
+               data-tags="blockchain,cs410"
+               data-pin="">
+              <div class="description"><h4>1.1: Sawtooth: Sending Transactions</h4></div>
+	      <div class="description">Interact with a deployed Hyperledger Sawtooth blockchain using Python</div>
+              <div class="card-duration">
+                <span>77 min </span>
+                <span>Updated Oct 16, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon sawtooth-icon"></div>
+                <paper-button class="sawtooth-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B1.4_sawtooth_full/index.html?index=..%2F..cs410b" on-tap="navigate"
+               class="codelab-card category-sawtooth"
+               data-category="Sawtooth,Web"
+               data-title="1.4: Sawtooth: Full application"
+               data-duration="0"
+               data-summary="Complete the frontend interface to support full interaction with the backend transaction processor"
+               data-updated="2021-10-16T12:18:43Z"
+               data-tags="blockchain,cs410"
+               data-pin="">
+              <div class="description"><h4>1.4: Sawtooth: Full application</h4></div>
+	      <div class="description">Complete the frontend interface to support full interaction with the backend transaction processor</div>
+              <div class="card-duration">
+                <span></span>
+                <span>Updated Oct 16, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon sawtooth-icon"></div>
+                <paper-button class="sawtooth-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B3.4_sictf_piggybank_securebank/index.html?index=..%2F..cs410b" on-tap="navigate"
+               class="codelab-card category-security"
+               data-category="Security,Ethereum"
+               data-title="3.4: D2 PiggyBank, D2 SecureBank"
+               data-duration="24"
+               data-summary="Exploit access control issues in smart contracts on Security Innovation&#39;s CTF"
+               data-updated="2021-11-02T20:12:59Z"
+               data-tags="blockchain,cs410"
+               data-pin="">
+              <div class="description"><h4>3.4: D2 PiggyBank, D2 SecureBank</h4></div>
+	      <div class="description">Exploit access control issues in smart contracts on Security Innovation&#39;s CTF</div>
+              <div class="card-duration">
+                <span>24 min </span>
+                <span>Updated Nov 2, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon security-icon"></div>
+                <paper-button class="security-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B3.5_sictf_raffle/index.html?index=..%2F..cs410b" on-tap="navigate"
+               class="codelab-card category-security"
+               data-category="Security,Ethereum"
+               data-title="3.5: D2/D6 Raffle"
+               data-duration="130"
+               data-summary="Exploit access control issues in smart contracts on Security Innovation&#39;s CTF"
+               data-updated="2021-11-02T20:23:03Z"
+               data-tags="blockchain,cs410"
+               data-pin="">
+              <div class="description"><h4>3.5: D2/D6 Raffle</h4></div>
+	      <div class="description">Exploit access control issues in smart contracts on Security Innovation&#39;s CTF</div>
+              <div class="card-duration">
+                <span>130 min </span>
+                <span>Updated Nov 2, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon security-icon"></div>
+                <paper-button class="security-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B3.1_sictf_donation_lockbox/index.html?index=..%2F..cs410b" on-tap="navigate"
+               class="codelab-card category-security"
+               data-category="Security,Ethereum"
+               data-title="3.1: D0 Donation, D6 Lockbox"
+               data-duration="60"
+               data-summary="Navigate and solve the initial levels of the Security Innovation CTF"
+               data-updated="2021-11-02T20:16:10Z"
+               data-tags="blockchain,cs410,cs411"
+               data-pin="">
+              <div class="description"><h4>3.1: D0 Donation, D6 Lockbox</h4></div>
+	      <div class="description">Navigate and solve the initial levels of the Security Innovation CTF</div>
+              <div class="card-duration">
+                <span>60 min </span>
+                <span>Updated Nov 2, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon security-icon"></div>
+                <paper-button class="security-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B3.7_sictf_trustfund/index.html?index=..%2F..cs410b" on-tap="navigate"
+               class="codelab-card category-security"
+               data-category="Security,Ethereum"
+               data-title="3.7: D1 TrustFund"
+               data-duration="35"
+               data-summary="Exploit re-entrancy issues in smart contracts on Security Innovation&#39;s CTF"
+               data-updated="2021-11-02T20:21:58Z"
+               data-tags="blockchain,cs410"
+               data-pin="">
+              <div class="description"><h4>3.7: D1 TrustFund</h4></div>
+	      <div class="description">Exploit re-entrancy issues in smart contracts on Security Innovation&#39;s CTF</div>
+              <div class="card-duration">
+                <span>35 min </span>
+                <span>Updated Nov 2, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon security-icon"></div>
+                <paper-button class="security-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B3.8_sictf_slotmachine_rainydayfund/index.html?index=..%2F..cs410b" on-tap="navigate"
+               class="codelab-card category-security"
+               data-category="Security,Ethereum"
+               data-title="3.8: D10 SlotMachine, D10/D3 RainyDayFund"
+               data-duration="34"
+               data-summary="Exploit issues in smart contracts on Security Innovation&#39;s CTF"
+               data-updated="2021-11-02T20:27:05Z"
+               data-tags="blockchain,cs410"
+               data-pin="">
+              <div class="description"><h4>3.8: D10 SlotMachine, D10/D3 RainyDayFund</h4></div>
+	      <div class="description">Exploit issues in smart contracts on Security Innovation&#39;s CTF</div>
+              <div class="card-duration">
+                <span>34 min </span>
+                <span>Updated Nov 2, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon security-icon"></div>
+                <paper-button class="security-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B3.9_sictf_scratchcard/index.html?index=..%2F..cs410b" on-tap="navigate"
+               class="codelab-card category-security"
+               data-category="Security,Ethereum"
+               data-title="3.9: D10/D3/D6 Scratchcard"
+               data-duration="53"
+               data-summary="Exploit issues in smart contracts on Security Innovation&#39;s CTF"
+               data-updated="2021-11-15T16:58:05Z"
+               data-tags="blockchain,cs410"
+               data-pin="">
+              <div class="description"><h4>3.9: D10/D3/D6 Scratchcard</h4></div>
+	      <div class="description">Exploit issues in smart contracts on Security Innovation&#39;s CTF</div>
+              <div class="card-duration">
+                <span>53 min </span>
+                <span>Updated Nov 15, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon security-icon"></div>
+                <paper-button class="security-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B3.2_sictf_headsortails_lottery/index.html?index=..%2F..cs410b" on-tap="navigate"
+               class="codelab-card category-security"
+               data-category="Security,Ethereum"
+               data-title="3.2: D6 HeadsOrTails, D6 Lottery"
+               data-duration="93"
+               data-summary="Exploit bad randomness in smart contracts on Security Innovation&#39;s CTF"
+               data-updated="2021-11-02T20:06:01Z"
+               data-tags="blockchain,cs410"
+               data-pin="">
+              <div class="description"><h4>3.2: D6 HeadsOrTails, D6 Lottery</h4></div>
+	      <div class="description">Exploit bad randomness in smart contracts on Security Innovation&#39;s CTF</div>
+              <div class="card-duration">
+                <span>93 min </span>
+                <span>Updated Nov 2, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon security-icon"></div>
+                <paper-button class="security-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B3.6_sictf_recordlabel/index.html?index=..%2F..cs410b" on-tap="navigate"
+               class="codelab-card category-security"
+               data-category="Security,Ethereum"
+               data-title="3.6: D5 RecordLabel"
+               data-duration="27"
+               data-summary="Exploit access control issues in smart contracts on Security Innovation&#39;s CTF"
+               data-updated="2021-11-02T20:20:36Z"
+               data-tags="blockchain,cs410"
+               data-pin="">
+              <div class="description"><h4>3.6: D5 RecordLabel</h4></div>
+	      <div class="description">Exploit access control issues in smart contracts on Security Innovation&#39;s CTF</div>
+              <div class="card-duration">
+                <span>27 min </span>
+                <span>Updated Nov 2, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon security-icon"></div>
+                <paper-button class="security-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B3.3_sictf_tokensale/index.html?index=..%2F..cs410b" on-tap="navigate"
+               class="codelab-card category-security"
+               data-category="Security,Ethereum"
+               data-title="3.3: D3 TokenSale"
+               data-duration="43"
+               data-summary="Exploit arithmetic issues in smart contracts on Security Innovation&#39;s CTF"
+               data-updated="2021-11-02T20:07:58Z"
+               data-tags="blockchain,cs410,cs411"
+               data-pin="">
+              <div class="description"><h4>3.3: D3 TokenSale</h4></div>
+	      <div class="description">Exploit arithmetic issues in smart contracts on Security Innovation&#39;s CTF</div>
+              <div class="card-duration">
+                <span>43 min </span>
+                <span>Updated Nov 2, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon security-icon"></div>
+                <paper-button class="security-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B0_course/index.html?index=..%2F..cs410b" on-tap="navigate"
+               class="codelab-card category-setup"
+               data-category="Setup"
+               data-title="0: Course Policies and Accounts"
+               data-duration="56"
+               data-summary="Policy agreement, Slack/GitLab/Google Cloud accounts"
+               data-updated="2021-10-06T19:42:39Z"
+               data-tags="blockchain,cs410"
+               data-pin="">
+              <div class="description"><h4>0: Course Policies and Accounts</h4></div>
+	      <div class="description">Policy agreement, Slack/GitLab/Google Cloud accounts</div>
+              <div class="card-duration">
+                <span>56 min </span>
+                <span>Updated Oct 6, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon setup-icon"></div>
+                <paper-button class="setup-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B2.4_smartcontracts/index.html?index=..%2F..cs410b" on-tap="navigate"
+               class="codelab-card category-solidity"
+               data-category="Solidity,Ethereum"
+               data-title="2.4: Solidity Smart Contracts on Ethereum"
+               data-duration="117"
+               data-summary="Develop, deploy, and interact with several smart contracts"
+               data-updated="2021-09-17T15:08:15Z"
+               data-tags="blockchain,cs410,cs411"
+               data-pin="">
+              <div class="description"><h4>2.4: Solidity Smart Contracts on Ethereum</h4></div>
+	      <div class="description">Develop, deploy, and interact with several smart contracts</div>
+              <div class="card-duration">
+                <span>117 min </span>
+                <span>Updated Sep 17, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon solidity-icon"></div>
+                <paper-button class="solidity-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B2.3_solidity_remix/index.html?index=..%2F..cs410b" on-tap="navigate"
+               class="codelab-card category-solidity"
+               data-category="Solidity,Ethereum"
+               data-title="2.3: Solidity, Remix, MyCrypto, Etherscan"
+               data-duration="35"
+               data-summary="Learn the basics of deploying, interacting, and debugging Solidity smart contracts using the Remix IDE, MyCrypto, and Etherscan."
+               data-updated="2021-10-19T16:25:24Z"
+               data-tags="blockchain,cs410,cs411"
+               data-pin="">
+              <div class="description"><h4>2.3: Solidity, Remix, MyCrypto, Etherscan</h4></div>
+	      <div class="description">Learn the basics of deploying, interacting, and debugging Solidity smart contracts using the Remix IDE, MyCrypto, and Etherscan.</div>
+              <div class="card-duration">
+                <span>35 min </span>
+                <span>Updated Oct 19, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon solidity-icon"></div>
+                <paper-button class="solidity-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B2.2_solidity_cryptozombies/index.html?index=..%2F..cs410b" on-tap="navigate"
+               class="codelab-card category-solidity"
+               data-category="Solidity,Ethereum"
+               data-title="2.2: Solidity With CryptoZombies"
+               data-duration="69"
+               data-summary="Learn the basics of Solidity programming using a collectible game modeled after CryptoKitties by Loom"
+               data-updated="2020-11-04T02:31:29Z"
+               data-tags="blockchain,cs410,cs411"
+               data-pin="">
+              <div class="description"><h4>2.2: Solidity With CryptoZombies</h4></div>
+	      <div class="description">Learn the basics of Solidity programming using a collectible game modeled after CryptoKitties by Loom</div>
+              <div class="card-duration">
+                <span>69 min </span>
+                <span>Updated Nov 4, 2020</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon solidity-icon"></div>
+                <paper-button class="solidity-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B4.3_vyper_web3_gb/index.html?index=..%2F..cs410b" on-tap="navigate"
+               class="codelab-card category-vyper"
+               data-category="Vyper,Ethereum"
+               data-title="4.3:  Vyper/Web3 Guestbook"
+               data-duration="48"
+               data-summary="Create a single-page DApp Guestbook and host it on a VM."
+               data-updated="2021-11-21T23:51:04Z"
+               data-tags="blockchain,cs410"
+               data-pin="">
+              <div class="description"><h4>4.3:  Vyper/Web3 Guestbook</h4></div>
+	      <div class="description">Create a single-page DApp Guestbook and host it on a VM.</div>
+              <div class="card-duration">
+                <span>48 min </span>
+                <span>Updated Nov 21, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon vyper-icon"></div>
+                <paper-button class="vyper-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B4.2_vyper_fundraiser/index.html?index=..%2F..cs410b" on-tap="navigate"
+               class="codelab-card category-vyper"
+               data-category="Vyper,Ethereum"
+               data-title="4.2: Vyper Smart Contracts on Ethereum"
+               data-duration="43"
+               data-summary="Develop a Vyper smart contract. Deploy and interact with it."
+               data-updated="2021-11-18T04:43:30Z"
+               data-tags="blockchain,cs410"
+               data-pin="">
+              <div class="description"><h4>4.2: Vyper Smart Contracts on Ethereum</h4></div>
+	      <div class="description">Develop a Vyper smart contract. Deploy and interact with it.</div>
+              <div class="card-duration">
+                <span>43 min </span>
+                <span>Updated Nov 18, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon vyper-icon"></div>
+                <paper-button class="vyper-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B4.1_vyper_intro/index.html?index=..%2F..cs410b" on-tap="navigate"
+               class="codelab-card category-vyper"
+               data-category="Vyper,Ethereum"
+               data-title="4.1: Vyper Introduction"
+               data-duration="27"
+               data-summary="Learn the basics of deploying, interacting, and debugging Vyper smart contracts using the Remix IDE, MyCrypto, and Etherscan."
+               data-updated="2021-11-12T23:41:56Z"
+               data-tags="blockchain,cs410"
+               data-pin="">
+              <div class="description"><h4>4.1: Vyper Introduction</h4></div>
+	      <div class="description">Learn the basics of deploying, interacting, and debugging Vyper smart contracts using the Remix IDE, MyCrypto, and Etherscan.</div>
+              <div class="card-duration">
+                <span>27 min </span>
+                <span>Updated Nov 12, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon vyper-icon"></div>
+                <paper-button class="vyper-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/B6_final/index.html?index=..%2F..cs410b" on-tap="navigate"
+               class="codelab-card category-vyper"
+               data-category="Vyper,Final,Ethereum"
+               data-title="B6: Final project"
+               data-duration="3"
+               data-summary="Final project (Due: Friday of Finals Week @11:30pm)"
+               data-updated="2020-11-04T03:00:06Z"
+               data-tags="blockchain,cs410"
+               data-pin="">
+              <div class="description"><h4>B6: Final project</h4></div>
+	      <div class="description">Final project (Due: Friday of Finals Week @11:30pm)</div>
+              <div class="card-duration">
+                <span>3 min </span>
+                <span>Updated Nov 4, 2020</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon vyper-icon"></div>
+                <paper-button class="vyper-bg">Start</paper-button>
+              </div>
+            </a>
+          
+      </card-sorter>
+
+      <div id="loading-placeholder" class="site-width">
+        Loading Codelabs, please wait...
+      </div>
+    </main>
+
+  </paper-header-panel>
+
+  <script src="/scripts/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,1026 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Labs and homework should be completed by each student.  For each lab, answer the questions asked and take screenshots that include your OdinID somewhere in the capture to demonstrate completion.  Include them in your lab notebook.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Internet, Web, and Cloud Systems">
+  <meta name="application-name" content="Internet, Web, and Cloud Systems">
+  <link rel="canonical" href="https://example.com/cs430/" />
+  <link rel="preconnect" href="https://www.google-analytics.com" />
+
+  <script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-49880327-14', 'auto');
+    ga('send', 'pageview');
+    
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  <title>Internet, Web, and Cloud Systems</title>
+
+  <link rel="stylesheet" href="/styles/main.css">
+
+  <link rel="import" href="/elements/elements.html">
+
+  <style is="custom-style">
+    :root {
+      --paper-tabs-selection-bar-color: currentcolor;
+      --paper-input-container-underline: {
+        display: none;
+      };
+      --paper-input-container-underline-focus: {
+        display: none;
+      };
+    }
+
+    .dropdown-filter {
+      --paper-input-container: {
+        padding: 8px;
+      }
+    }
+  </style>
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#455a64">
+  <meta name="apple-mobile-web-app-title" content="Internet, Web, and Cloud Systems">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="194x194" href="/images/favicons/favicon-194x194.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicons/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#455a64">
+  <meta name="msapplication-TileColor" content="#455a64">
+  <meta name="msapplication-TileImage" content="/images/favicons/mstile-144x144.png">
+  <meta name="theme-color" content="#455a64">
+
+  <meta name="og:type" property="og:type" content="website" />
+  <meta name="og:title" property="og:title" content="Internet, Web, and Cloud Systems" />
+  <meta name="og:description" property="og:description" content="Labs and homework should be completed by each student.  For each lab, answer the questions asked and take screenshots that include your OdinID somewhere in the capture to demonstrate completion.  Include them in your lab notebook." />
+  <meta name="og:url" property="og:url" content="https://example.com/cs430/" />
+  <meta name="og:site_name" property="og:site_name" content="Codelabs" />
+  <meta name="og:determiner" property="og:determiner" content="the" />
+  <meta name="og:locale" property="og:locale" content="en_US" />
+  <meta name="og:image" property="og:image" content="/images/og-image.png" />
+  <meta name="og:image:url" property="og:image:url" content="/images/og-image.png" />
+  <meta name="og:image:type" property="og:image:type" content="image/png" />
+  <meta name="og:image:width" property="og:image:width" content="1200" />
+  <meta name="og:image:height" property="og:image:height" content="1200" />
+  <meta name="og:image:alt" property="og:image:alt" content="Codelabs" />
+
+  <meta name="twitter:card" property="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" property="twitter:title" content="Internet, Web, and Cloud Systems" />
+  <meta name="twitter:description" property="twitter:description" content="Labs and homework should be completed by each student.  For each lab, answer the questions asked and take screenshots that include your OdinID somewhere in the capture to demonstrate completion.  Include them in your lab notebook." />
+  <meta name="twitter:image" property="twitter:image" content="/images/og-image.png" />
+  <meta name="twitter:url" property="twitter:url" content="https://example.com/cs430/" />
+</head>
+
+<body id="app" is="body-bind" class="loading fullbleed view">
+  <paper-header-panel id="main" mode="standard" main>
+<!--    
+    <div id="mainToolbar" class="paper-header">
+      <div class="site-width layout horizontal">
+        <a href="/">
+          <img src="/images/logo.png" class="logo-devs" alt="Codelabs Logo">
+        </a>
+        <div id="searchbar">
+          <paper-input-container no-label-float>
+            <paper-icon-button prefix icon="search"></paper-icon-button>
+            <label>Search</label>
+            <input is="iron-input" bind-value="{{searchVal}}" on-keydown="onSearchKeyDown">
+          </paper-input-container>
+        </div>
+      </div>
+    </div>
+    
+-->
+    
+    <header id="banner" down>
+      <div class="site-width">
+        <p><img id="logo" src="/images/logopsu.png" width="30" height="40" alt="Portland State University"></p>
+          <div class="banner-description">
+            <div class="banner-meta">
+              <h2>Internet, Web, and Cloud Systems</h2>
+              <p>Labs and homework should be completed by each student.  For each lab, answer the questions asked and take screenshots that include your OdinID somewhere in the capture to demonstrate completion.  Include them in your lab notebook.</p>
+              
+            </div>
+          </div>
+      </div>
+    </header>
+
+    <main>
+      <div id="filters" class="site-width layout horizontal center justified">
+        <div id="sortby">
+          <paper-tabs selected="0" noink on-iron-activate="sortBy">
+            <paper-tab>A-Z</paper-tab>
+            <paper-tab>Recent</paper-tab>
+            <paper-tab>Duration</paper-tab>
+          </paper-tabs>
+        </div>
+
+        
+        <paper-dropdown-menu
+          label="Choose a class"
+          class="dropdown-filter"
+          no-label-float
+          noink no-animations
+        >
+          <paper-listbox
+            id="eventList"
+            slot="dropdown-content"
+            class="dropdown-content"
+          ><a href="/cs410b/" tabindex="-1">
+                  <paper-item>Blockchain Development and Security</paper-item>
+                </a>
+              <a href="/cs411/" tabindex="-1">
+                  <paper-item>Business Blockchain Fundamentals Lab</paper-item>
+                </a>
+              <a href="/cs430/" tabindex="-1">
+                  <paper-item>Internet, Web, and Cloud Systems</paper-item>
+                </a>
+              <a href="/cs492/" tabindex="-1">
+                  <paper-item>Malware Reverse Engineering</paper-item>
+                </a>
+              <a href="/cs495/" tabindex="-1">
+                  <paper-item>Web and Cloud Security</paper-item>
+                </a>
+              <a href="/vslive/" tabindex="-1">
+                  <paper-item>Visual Studio Live</paper-item>
+                </a>
+              
+          </paper-listbox>
+        </paper-dropdown-menu>
+        <paper-dropdown-menu
+          label="Filter by category"
+          class="dropdown-filter"
+          no-label-float
+          noink no-animations
+        >
+          <paper-listbox
+            id="categorylist"
+            slot="dropdown-content"
+            class="dropdown-content"
+            on-iron-activate="onCategoryActivate"
+            attr-for-selected="filter"
+          >
+              <paper-item filter="AWS">AWS</paper-item>
+                <paper-item filter="GCP">GCP</paper-item>
+                <paper-item filter="Homework">Homework</paper-item>
+                <paper-item filter="Networking">Networking</paper-item>
+                <paper-item filter="Python">Python</paper-item>
+                
+          </paper-listbox>
+        </paper-dropdown-menu></div>
+
+      <card-sorter id="cards" class="site-width">
+        
+          
+            
+            <a href="/labs/C08.1a_cdk_gb/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-aws"
+               data-category="AWS,Guestbook,Wk08"
+               data-title="08.1a: CDK Guestbook"
+               data-duration="38"
+               data-summary="Deploy a REST API using AWS Cloud Development Kit (CDK)"
+               data-updated="2021-06-30T03:04:05Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>08.1a: CDK Guestbook</h4></div>
+	      <div class="description">Deploy a REST API using AWS Cloud Development Kit (CDK)</div>
+              <div class="card-duration">
+                <span>38 min </span>
+                <span>Updated Jun 30, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon aws-icon"></div>
+                <paper-button class="aws-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C04.1a_nginx_ec2_gb/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-aws"
+               data-category="AWS,Guestbook,Wk04"
+               data-title="04.1a: nginx EC2 Guestbook"
+               data-duration="60"
+               data-summary="Deploy a web application with nginx on an EC2 VM"
+               data-updated="2021-08-26T21:29:34Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>04.1a: nginx EC2 Guestbook</h4></div>
+	      <div class="description">Deploy a web application with nginx on an EC2 VM</div>
+              <div class="card-duration">
+                <span>60 min </span>
+                <span>Updated Aug 26, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon aws-icon"></div>
+                <paper-button class="aws-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C05.2a_dynamodb_gb/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-aws"
+               data-category="AWS,Guestbook,Wk05"
+               data-title="05.2a: DynamoDB Guestbook"
+               data-duration="144"
+               data-summary="Deploy a web application locally and on a cloud VM that uses a serverless database backend"
+               data-updated="2021-11-02T01:47:08Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>05.2a: DynamoDB Guestbook</h4></div>
+	      <div class="description">Deploy a web application locally and on a cloud VM that uses a serverless database backend</div>
+              <div class="card-duration">
+                <span>144 min </span>
+                <span>Updated Nov 2, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon aws-icon"></div>
+                <paper-button class="aws-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C06.1a_eb_gb/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-aws"
+               data-category="AWS,Guestbook,Wk06"
+               data-title="06.1a: EB Guestbook"
+               data-duration="49"
+               data-summary="Deploy a web application to a serverless platform and a serverless database backend"
+               data-updated="2021-09-06T17:04:57Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>06.1a: EB Guestbook</h4></div>
+	      <div class="description">Deploy a web application to a serverless platform and a serverless database backend</div>
+              <div class="card-duration">
+                <span>49 min </span>
+                <span>Updated Sep 6, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon aws-icon"></div>
+                <paper-button class="aws-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C07.3a_lambda_apigateway_gb/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-aws"
+               data-category="AWS,Guestbook,Wk07"
+               data-title="07.3a: Lambda, API Gateway Guestbook"
+               data-duration="79"
+               data-summary="Deploy a REST API to API Gateway, and Lambda"
+               data-updated="2021-11-15T13:44:47Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>07.3a: Lambda, API Gateway Guestbook</h4></div>
+	      <div class="description">Deploy a REST API to API Gateway, and Lambda</div>
+              <div class="card-duration">
+                <span>79 min </span>
+                <span>Updated Nov 15, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon aws-icon"></div>
+                <paper-button class="aws-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C06.3a_ecs_gb/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-aws"
+               data-category="AWS,Guestbook,Wk06"
+               data-title="06.3a: ECS Guestbook"
+               data-duration="57"
+               data-summary="Deploy a web application in a container to ECS that uses a serverless database backend"
+               data-updated="2021-10-29T18:15:01Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>06.3a: ECS Guestbook</h4></div>
+	      <div class="description">Deploy a web application in a container to ECS that uses a serverless database backend</div>
+              <div class="card-duration">
+                <span>57 min </span>
+                <span>Updated Oct 29, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon aws-icon"></div>
+                <paper-button class="aws-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C07.2a_apis_motd_gettime/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-aws"
+               data-category="AWS,Wk07"
+               data-title="07.2a: APIs"
+               data-duration="36"
+               data-summary="Implement a message of the day and time of day API via Lambda and API Gateway"
+               data-updated="2021-09-06T20:14:39Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>07.2a: APIs</h4></div>
+	      <div class="description">Implement a message of the day and time of day API via Lambda and API Gateway</div>
+              <div class="card-duration">
+                <span>36 min </span>
+                <span>Updated Sep 6, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon aws-icon"></div>
+                <paper-button class="aws-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C06.2g_cloudrun_webproxy/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-gcp"
+               data-category="GCP,Wk06"
+               data-title="06.2g: Cloud Run, Secret Manager (Web proxy)"
+               data-duration="38"
+               data-summary="Build application containers and deploy them onto a serverless container platform."
+               data-updated="2021-12-14T18:13:31Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>06.2g: Cloud Run, Secret Manager (Web proxy)</h4></div>
+	      <div class="description">Build application containers and deploy them onto a serverless container platform.</div>
+              <div class="card-duration">
+                <span>38 min </span>
+                <span>Updated Dec 14, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon gcp-icon"></div>
+                <paper-button class="gcp-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C10.1g_cdn/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-gcp"
+               data-category="GCP,Wk10"
+               data-title="10.1g: CDN"
+               data-duration="59"
+               data-summary="Practice deploying infrastructure for scaling web sites"
+               data-updated="2021-12-06T21:51:43Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>10.1g: CDN</h4></div>
+	      <div class="description">Practice deploying infrastructure for scaling web sites</div>
+              <div class="card-duration">
+                <span>59 min </span>
+                <span>Updated Dec 6, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon gcp-icon"></div>
+                <paper-button class="gcp-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C09.3g_dataproc_dataflow/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-gcp"
+               data-category="GCP,Wk09"
+               data-title="09.3g: Dataproc, Dataflow"
+               data-duration="72"
+               data-summary="Perform parallel computations using a Map-Reduce model and a Datastream processing one."
+               data-updated="2021-11-30T14:50:17Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>09.3g: Dataproc, Dataflow</h4></div>
+	      <div class="description">Perform parallel computations using a Map-Reduce model and a Datastream processing one.</div>
+              <div class="card-duration">
+                <span>72 min </span>
+                <span>Updated Nov 30, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon gcp-icon"></div>
+                <paper-button class="gcp-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C04.1g_nginx_compute_gb/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-gcp"
+               data-category="GCP,Guestbook,Wk04"
+               data-title="04.1g: nginx Compute Engine Guestbook"
+               data-duration="60"
+               data-summary="Deploy a web application with nginx on a Compute Engine VM, register a DNS name for it, and obtain a TLS certificate."
+               data-updated="2021-10-20T19:10:22Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>04.1g: nginx Compute Engine Guestbook</h4></div>
+	      <div class="description">Deploy a web application with nginx on a Compute Engine VM, register a DNS name for it, and obtain a TLS certificate.</div>
+              <div class="card-duration">
+                <span>60 min </span>
+                <span>Updated Oct 20, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon gcp-icon"></div>
+                <paper-button class="gcp-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C04.2g_docker_gb/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-gcp"
+               data-category="GCP,Guestbook,Wk04"
+               data-title="04.2g. Docker Guestbook"
+               data-duration="65"
+               data-summary="Deploy a web application in different containers across multiple VM platforms."
+               data-updated="2021-10-29T18:17:17Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>04.2g. Docker Guestbook</h4></div>
+	      <div class="description">Deploy a web application in different containers across multiple VM platforms.</div>
+              <div class="card-duration">
+                <span>65 min </span>
+                <span>Updated Oct 29, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon gcp-icon"></div>
+                <paper-button class="gcp-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C07.3g_restapi_cloud_functions_gb/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-gcp"
+               data-category="GCP,Guestbook,Wk07"
+               data-title="07.3g: Cloud Functions API Guestbook"
+               data-duration="79"
+               data-summary="Deploy a REST API using Cloud Functions"
+               data-updated="2021-11-15T13:49:59Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>07.3g: Cloud Functions API Guestbook</h4></div>
+	      <div class="description">Deploy a REST API using Cloud Functions</div>
+              <div class="card-duration">
+                <span>79 min </span>
+                <span>Updated Nov 15, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon gcp-icon"></div>
+                <paper-button class="gcp-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C05.1g_storage_iam/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-gcp"
+               data-category="GCP,Wk05"
+               data-title="05.1g: Storage, IAM"
+               data-duration="91"
+               data-summary="Practice working with cloud storage services"
+               data-updated="2021-10-25T21:30:08Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>05.1g: Storage, IAM</h4></div>
+	      <div class="description">Practice working with cloud storage services</div>
+              <div class="card-duration">
+                <span>91 min </span>
+                <span>Updated Oct 25, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon gcp-icon"></div>
+                <paper-button class="gcp-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C09.2g_bq_notebooks/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-gcp"
+               data-category="GCP,Wk09"
+               data-title="09.2g: BigQuery, JupyterLab"
+               data-duration="60"
+               data-summary="Query a data warehouse using interactive Python notebooks"
+               data-updated="2021-11-23T23:42:34Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>09.2g: BigQuery, JupyterLab</h4></div>
+	      <div class="description">Query a data warehouse using interactive Python notebooks</div>
+              <div class="card-duration">
+                <span>60 min </span>
+                <span>Updated Nov 23, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon gcp-icon"></div>
+                <paper-button class="gcp-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C05.2g_datastore_gb/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-gcp"
+               data-category="GCP,Guestbook,Wk05"
+               data-title="05.2g: Cloud Datastore Guestbook"
+               data-duration="99"
+               data-summary="Deploy a web application locally and on a cloud VM that uses a serverless database backend"
+               data-updated="2021-11-01T18:53:27Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>05.2g: Cloud Datastore Guestbook</h4></div>
+	      <div class="description">Deploy a web application locally and on a cloud VM that uses a serverless database backend</div>
+              <div class="card-duration">
+                <span>99 min </span>
+                <span>Updated Nov 1, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon gcp-icon"></div>
+                <paper-button class="gcp-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C08.4g_firebase/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-gcp"
+               data-category="GCP,Wk08"
+               data-title="08.4g: Firebase"
+               data-duration="66"
+               data-summary="Use Backend-as-a-Service support to implement a real-time messaging application supporting OAuth authentication"
+               data-updated="2021-12-14T18:46:22Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>08.4g: Firebase</h4></div>
+	      <div class="description">Use Backend-as-a-Service support to implement a real-time messaging application supporting OAuth authentication</div>
+              <div class="card-duration">
+                <span>66 min </span>
+                <span>Updated Dec 14, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon gcp-icon"></div>
+                <paper-button class="gcp-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C06.1g_appengine_gb/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-gcp"
+               data-category="GCP,Guestbook,Wk06"
+               data-title="06.1g: App Engine Guestbook"
+               data-duration="22"
+               data-summary="Deploy a web application to a serverless platform and a serverless database backend"
+               data-updated="2021-11-04T12:41:29Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>06.1g: App Engine Guestbook</h4></div>
+	      <div class="description">Deploy a web application to a serverless platform and a serverless database backend</div>
+              <div class="card-duration">
+                <span>22 min </span>
+                <span>Updated Nov 4, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon gcp-icon"></div>
+                <paper-button class="gcp-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C08.3g_mlapis/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-gcp"
+               data-category="GCP,Wk08"
+               data-title="08.3g: ML APIs"
+               data-duration="105"
+               data-summary="Use APIs to analyze images, speech, video, and text."
+               data-updated="2021-12-14T18:46:12Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>08.3g: ML APIs</h4></div>
+	      <div class="description">Use APIs to analyze images, speech, video, and text.</div>
+              <div class="card-duration">
+                <span>105 min </span>
+                <span>Updated Dec 14, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon gcp-icon"></div>
+                <paper-button class="gcp-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C03.2ag_sql/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-gcp"
+               data-category="GCP,AWS,Wk03"
+               data-title="03.2ag: SQL"
+               data-duration="42"
+               data-summary="Practice using relational databases and SQL via AWS RDS and GCP Cloud SQL"
+               data-updated="2021-08-30T15:04:08Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>03.2ag: SQL</h4></div>
+	      <div class="description">Practice using relational databases and SQL via AWS RDS and GCP Cloud SQL</div>
+              <div class="card-duration">
+                <span>42 min </span>
+                <span>Updated Aug 30, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon gcp-icon"></div>
+                <paper-button class="gcp-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C06.3g_cloudrun_gb/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-gcp"
+               data-category="GCP,Guestbook,Wk06"
+               data-title="06.3g: Cloud Run Guestbook"
+               data-duration="22"
+               data-summary="Deploy a web application in a container to Cloud Run that uses a serverless database backend"
+               data-updated="2021-12-09T16:34:58Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>06.3g: Cloud Run Guestbook</h4></div>
+	      <div class="description">Deploy a web application in a container to Cloud Run that uses a serverless database backend</div>
+              <div class="card-duration">
+                <span>22 min </span>
+                <span>Updated Dec 9, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon gcp-icon"></div>
+                <paper-button class="gcp-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C06.4g_cloud_functions_blurring/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-gcp"
+               data-category="GCP,Wk06"
+               data-title="06.4g: Cloud Functions (Image blurring)"
+               data-duration="25"
+               data-summary="Use Cloud Functions to analyze and blur images"
+               data-updated="2021-08-27T22:45:15Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>06.4g: Cloud Functions (Image blurring)</h4></div>
+	      <div class="description">Use Cloud Functions to analyze and blur images</div>
+              <div class="card-duration">
+                <span>25 min </span>
+                <span>Updated Aug 27, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon gcp-icon"></div>
+                <paper-button class="gcp-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C07.2g_apis_slack/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-gcp"
+               data-category="GCP,Wk07"
+               data-title="07.2g: APIs (Slack, Knowledge Graph)"
+               data-duration="32"
+               data-summary="Use Cloud Functions to implement a custom Slack command."
+               data-updated="2021-08-28T14:43:40Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>07.2g: APIs (Slack, Knowledge Graph)</h4></div>
+	      <div class="description">Use Cloud Functions to implement a custom Slack command.</div>
+              <div class="card-duration">
+                <span>32 min </span>
+                <span>Updated Aug 28, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon gcp-icon"></div>
+                <paper-button class="gcp-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C07.1g_kubernetes_gb/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-gcp"
+               data-category="GCP,Guestbook,Wk07"
+               data-title="07.1g: Kubernetes Guestbook"
+               data-duration="42"
+               data-summary="Deploy a web application in a container using the Kubernetes orchestration platform"
+               data-updated="2021-08-27T23:33:02Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>07.1g: Kubernetes Guestbook</h4></div>
+	      <div class="description">Deploy a web application in a container using the Kubernetes orchestration platform</div>
+              <div class="card-duration">
+                <span>42 min </span>
+                <span>Updated Aug 27, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon gcp-icon"></div>
+                <paper-button class="gcp-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C08.1g_dm_gb/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-gcp"
+               data-category="GCP,Guestbook,Wk08"
+               data-title="08.1g: Deployment Manager Guestbook"
+               data-duration="43"
+               data-summary="Deploy a REST API using Google Deployment Manager"
+               data-updated="2021-08-28T20:34:00Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>08.1g: Deployment Manager Guestbook</h4></div>
+	      <div class="description">Deploy a REST API using Google Deployment Manager</div>
+              <div class="card-duration">
+                <span>43 min </span>
+                <span>Updated Aug 28, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon gcp-icon"></div>
+                <paper-button class="gcp-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C06.5_hw4/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-homework"
+               data-category="Homework,Wk06"
+               data-title="06.5: Homework #4"
+               data-duration="122"
+               data-summary="Deploy your web application to Cloud Run using a Cloud Datastore backend."
+               data-updated="2020-11-04T01:44:59Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>06.5: Homework #4</h4></div>
+	      <div class="description">Deploy your web application to Cloud Run using a Cloud Datastore backend.</div>
+              <div class="card-duration">
+                <span>122 min </span>
+                <span>Updated Nov 4, 2020</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon homework-icon"></div>
+                <paper-button class="homework-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C01.1_hw1/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-homework"
+               data-category="Homework,Wk01"
+               data-title="01.1: Homework #1"
+               data-duration="91"
+               data-summary="Setup the accounts and virtual machines for use in this course."
+               data-updated="2022-01-20T14:30:00Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>01.1: Homework #1</h4></div>
+	      <div class="description">Setup the accounts and virtual machines for use in this course.</div>
+              <div class="card-duration">
+                <span>91 min </span>
+                <span>Updated Jan 20, 2022</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon homework-icon"></div>
+                <paper-button class="homework-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C04.3_hw3/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-homework"
+               data-category="Homework,Wk04"
+               data-title="04.3: Homework #3"
+               data-duration="122"
+               data-summary="Containerize a Python Flask web application and host it on Docker Hub"
+               data-updated="2020-11-04T01:37:17Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>04.3: Homework #3</h4></div>
+	      <div class="description">Containerize a Python Flask web application and host it on Docker Hub</div>
+              <div class="card-duration">
+                <span>122 min </span>
+                <span>Updated Nov 4, 2020</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon homework-icon"></div>
+                <paper-button class="homework-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C03.4_hw2/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-homework"
+               data-category="Homework,Wk03"
+               data-title="03.4: Homework #2"
+               data-duration="192"
+               data-summary="Create a toy Python Flask web application"
+               data-updated="2021-09-22T16:11:11Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>03.4: Homework #2</h4></div>
+	      <div class="description">Create a toy Python Flask web application</div>
+              <div class="card-duration">
+                <span>192 min </span>
+                <span>Updated Sep 22, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon homework-icon"></div>
+                <paper-button class="homework-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C09.1_final/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-homework"
+               data-category="Homework,Wk09"
+               data-title="09.1: Final project"
+               data-duration="422"
+               data-summary="Final project (Due: Friday of Finals Week @11:30pm)"
+               data-updated="2021-12-11T17:25:00Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>09.1: Final project</h4></div>
+	      <div class="description">Final project (Due: Friday of Finals Week @11:30pm)</div>
+              <div class="card-duration">
+                <span>422 min </span>
+                <span>Updated Dec 11, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon homework-icon"></div>
+                <paper-button class="homework-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C01.2_networking/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-networking"
+               data-category="Networking,Wk01"
+               data-title="01.2: ARP, Wireshark, Netsim"
+               data-duration="60"
+               data-summary="Learn network protocols using Netsim, nmap, and netstat."
+               data-updated="2021-10-01T02:42:32Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>01.2: ARP, Wireshark, Netsim</h4></div>
+	      <div class="description">Learn network protocols using Netsim, nmap, and netstat.</div>
+              <div class="card-duration">
+                <span>60 min </span>
+                <span>Updated Oct 1, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon networking-icon"></div>
+                <paper-button class="networking-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C02.2_dns_recap/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-networking"
+               data-category="Networking,Wk02"
+               data-title="02.2: DNS, Recap"
+               data-duration="90"
+               data-summary="Practice working with DNS and examine the network protocol stack in action."
+               data-updated="2021-10-01T02:41:19Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>02.2: DNS, Recap</h4></div>
+	      <div class="description">Practice working with DNS and examine the network protocol stack in action.</div>
+              <div class="card-duration">
+                <span>90 min </span>
+                <span>Updated Oct 1, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon networking-icon"></div>
+                <paper-button class="networking-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C02.1_tcp_http/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-networking"
+               data-category="Networking,GCP,Wk02"
+               data-title="02.1: TCP, HTTP"
+               data-duration="35"
+               data-summary="Practice working with transport and application protocols via netstat, lsof, nc, iperf, and browser tools."
+               data-updated="2021-08-26T22:58:56Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>02.1: TCP, HTTP</h4></div>
+	      <div class="description">Practice working with transport and application protocols via netstat, lsof, nc, iperf, and browser tools.</div>
+              <div class="card-duration">
+                <span>35 min </span>
+                <span>Updated Aug 26, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon networking-icon"></div>
+                <paper-button class="networking-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C01.3_cloud_networking/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-networking"
+               data-category="Networking,GCP,Wk01"
+               data-title="01.3: Cloud networking"
+               data-duration="57"
+               data-summary="Setup networks in the cloud"
+               data-updated="2021-10-25T21:31:06Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>01.3: Cloud networking</h4></div>
+	      <div class="description">Setup networks in the cloud</div>
+              <div class="card-duration">
+                <span>57 min </span>
+                <span>Updated Oct 25, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon networking-icon"></div>
+                <paper-button class="networking-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C03.3_sqlite3_gb/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-python"
+               data-category="Python,GCP,AWS,Guestbook,Wk03"
+               data-title="03.3: sqlite3 Guestbook"
+               data-duration="27"
+               data-summary="Run a simple web application using Python and Flask with a sqlite3 backend"
+               data-updated="2021-08-30T15:04:41Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>03.3: sqlite3 Guestbook</h4></div>
+	      <div class="description">Run a simple web application using Python and Flask with a sqlite3 backend</div>
+              <div class="card-duration">
+                <span>27 min </span>
+                <span>Updated Aug 30, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon python-icon"></div>
+                <paper-button class="python-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/C03.1_python_flask_gb/index.html?index=..%2F..cs430" on-tap="navigate"
+               class="codelab-card category-python"
+               data-category="Python,GCP,AWS,Guestbook,Wk03"
+               data-title="03.1: Python Flask Guestbook"
+               data-duration="18"
+               data-summary="Run a simple web application using Python and Flask"
+               data-updated="2021-10-17T15:46:58Z"
+               data-tags="cs430"
+               data-pin="">
+              <div class="description"><h4>03.1: Python Flask Guestbook</h4></div>
+	      <div class="description">Run a simple web application using Python and Flask</div>
+              <div class="card-duration">
+                <span>18 min </span>
+                <span>Updated Oct 17, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon python-icon"></div>
+                <paper-button class="python-bg">Start</paper-button>
+              </div>
+            </a>
+          
+      </card-sorter>
+
+      <div id="loading-placeholder" class="site-width">
+        Loading Codelabs, please wait...
+      </div>
+    </main>
+
+  </paper-header-panel>
+
+  <script src="/scripts/main.js"></script>
+</body>
+</html>

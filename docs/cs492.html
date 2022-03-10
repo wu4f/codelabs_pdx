@@ -1,0 +1,270 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="The labs below walk through setting up and running the AFL lab and angr symbolic exeuction CTF.  Read more about these codelabs at https://edu.google.com/why-google/case-studies/portland-state-cybersecurity-cloud">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Malware Reverse Engineering">
+  <meta name="application-name" content="Malware Reverse Engineering">
+  <link rel="canonical" href="https://example.com/cs492/" />
+  <link rel="preconnect" href="https://www.google-analytics.com" />
+
+  <script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-49880327-14', 'auto');
+    ga('send', 'pageview');
+    
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  <title>Malware Reverse Engineering</title>
+
+  <link rel="stylesheet" href="/styles/main.css">
+
+  <link rel="import" href="/elements/elements.html">
+
+  <style is="custom-style">
+    :root {
+      --paper-tabs-selection-bar-color: currentcolor;
+      --paper-input-container-underline: {
+        display: none;
+      };
+      --paper-input-container-underline-focus: {
+        display: none;
+      };
+    }
+
+    .dropdown-filter {
+      --paper-input-container: {
+        padding: 8px;
+      }
+    }
+  </style>
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#455a64">
+  <meta name="apple-mobile-web-app-title" content="Malware Reverse Engineering">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="194x194" href="/images/favicons/favicon-194x194.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicons/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#455a64">
+  <meta name="msapplication-TileColor" content="#455a64">
+  <meta name="msapplication-TileImage" content="/images/favicons/mstile-144x144.png">
+  <meta name="theme-color" content="#455a64">
+
+  <meta name="og:type" property="og:type" content="website" />
+  <meta name="og:title" property="og:title" content="Malware Reverse Engineering" />
+  <meta name="og:description" property="og:description" content="The labs below walk through setting up and running the AFL lab and angr symbolic exeuction CTF.  Read more about these codelabs at https://edu.google.com/why-google/case-studies/portland-state-cybersecurity-cloud" />
+  <meta name="og:url" property="og:url" content="https://example.com/cs492/" />
+  <meta name="og:site_name" property="og:site_name" content="Codelabs" />
+  <meta name="og:determiner" property="og:determiner" content="the" />
+  <meta name="og:locale" property="og:locale" content="en_US" />
+  <meta name="og:image" property="og:image" content="/images/og-image.png" />
+  <meta name="og:image:url" property="og:image:url" content="/images/og-image.png" />
+  <meta name="og:image:type" property="og:image:type" content="image/png" />
+  <meta name="og:image:width" property="og:image:width" content="1200" />
+  <meta name="og:image:height" property="og:image:height" content="1200" />
+  <meta name="og:image:alt" property="og:image:alt" content="Codelabs" />
+
+  <meta name="twitter:card" property="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" property="twitter:title" content="Malware Reverse Engineering" />
+  <meta name="twitter:description" property="twitter:description" content="The labs below walk through setting up and running the AFL lab and angr symbolic exeuction CTF.  Read more about these codelabs at https://edu.google.com/why-google/case-studies/portland-state-cybersecurity-cloud" />
+  <meta name="twitter:image" property="twitter:image" content="/images/og-image.png" />
+  <meta name="twitter:url" property="twitter:url" content="https://example.com/cs492/" />
+</head>
+
+<body id="app" is="body-bind" class="loading fullbleed view">
+  <paper-header-panel id="main" mode="standard" main>
+<!--    
+    <div id="mainToolbar" class="paper-header">
+      <div class="site-width layout horizontal">
+        <a href="/">
+          <img src="/images/logo.png" class="logo-devs" alt="Codelabs Logo">
+        </a>
+        <div id="searchbar">
+          <paper-input-container no-label-float>
+            <paper-icon-button prefix icon="search"></paper-icon-button>
+            <label>Search</label>
+            <input is="iron-input" bind-value="{{searchVal}}" on-keydown="onSearchKeyDown">
+          </paper-input-container>
+        </div>
+      </div>
+    </div>
+    
+-->
+    
+    <header id="banner" down>
+      <div class="site-width">
+        <p><img id="logo" src="/images/logopsu.png" width="30" height="40" alt="Portland State University"></p>
+          <div class="banner-description">
+            <div class="banner-meta">
+              <h2>Malware Reverse Engineering</h2>
+              <p>The labs below walk through setting up and running the AFL lab and angr symbolic exeuction CTF.  Read more about these codelabs at https://edu.google.com/why-google/case-studies/portland-state-cybersecurity-cloud</p>
+              
+            </div>
+          </div>
+      </div>
+    </header>
+
+    <main>
+      <div id="filters" class="site-width layout horizontal center justified">
+        <div id="sortby">
+          <paper-tabs selected="0" noink on-iron-activate="sortBy">
+            <paper-tab>A-Z</paper-tab>
+            <paper-tab>Recent</paper-tab>
+            <paper-tab>Duration</paper-tab>
+          </paper-tabs>
+        </div>
+
+        
+        <paper-dropdown-menu
+          label="Choose a class"
+          class="dropdown-filter"
+          no-label-float
+          noink no-animations
+        >
+          <paper-listbox
+            id="eventList"
+            slot="dropdown-content"
+            class="dropdown-content"
+          ><a href="/cs410b/" tabindex="-1">
+                  <paper-item>Blockchain Development and Security</paper-item>
+                </a>
+              <a href="/cs411/" tabindex="-1">
+                  <paper-item>Business Blockchain Fundamentals Lab</paper-item>
+                </a>
+              <a href="/cs430/" tabindex="-1">
+                  <paper-item>Internet, Web, and Cloud Systems</paper-item>
+                </a>
+              <a href="/cs492/" tabindex="-1">
+                  <paper-item>Malware Reverse Engineering</paper-item>
+                </a>
+              <a href="/cs495/" tabindex="-1">
+                  <paper-item>Web and Cloud Security</paper-item>
+                </a>
+              <a href="/vslive/" tabindex="-1">
+                  <paper-item>Visual Studio Live</paper-item>
+                </a>
+              
+          </paper-listbox>
+        </paper-dropdown-menu>
+        </div>
+
+      <card-sorter id="cards" class="site-width">
+        
+          
+            
+            <a href="/labs/M1_pma/index.html?index=..%2F..cs492" on-tap="navigate"
+               class="codelab-card category-security"
+               data-category="Security,Windows"
+               data-title="1. Practical Malware Analysis Labs"
+               data-duration="25"
+               data-summary="Setup the VM that will be used to run the textbook&#39;s lab assignments."
+               data-updated="2021-03-03T17:14:38Z"
+               data-tags="cs492"
+               data-pin="">
+              <div class="description"><h4>1. Practical Malware Analysis Labs</h4></div>
+	      <div class="description">Setup the VM that will be used to run the textbook&#39;s lab assignments.</div>
+              <div class="card-duration">
+                <span>25 min </span>
+                <span>Updated Mar 3, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon security-icon"></div>
+                <paper-button class="security-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/M2_afl/index.html?index=..%2F..cs492" on-tap="navigate"
+               class="codelab-card category-security"
+               data-category="Security,afl"
+               data-title="2. AFL"
+               data-duration="87"
+               data-summary="Run a Docker container with the American Fuzzy Lop smart fuzzer on Google Cloud to find the Heartbleed OpenSSL vulnerability."
+               data-updated="2021-10-29T18:25:51Z"
+               data-tags="cs492"
+               data-pin="">
+              <div class="description"><h4>2. AFL</h4></div>
+	      <div class="description">Run a Docker container with the American Fuzzy Lop smart fuzzer on Google Cloud to find the Heartbleed OpenSSL vulnerability.</div>
+              <div class="card-duration">
+                <span>87 min </span>
+                <span>Updated Oct 29, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon security-icon"></div>
+                <paper-button class="security-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/M3_angr/index.html?index=..%2F..cs492" on-tap="navigate"
+               class="codelab-card category-security"
+               data-category="Security,angr"
+               data-title="3. angr"
+               data-duration="21"
+               data-summary="Run a Docker container on Google Cloud to automatically solve levels in the angr symbolic execution CTF."
+               data-updated="2021-03-15T16:30:26Z"
+               data-tags="cs492"
+               data-pin="">
+              <div class="description"><h4>3. angr</h4></div>
+	      <div class="description">Run a Docker container on Google Cloud to automatically solve levels in the angr symbolic execution CTF.</div>
+              <div class="card-duration">
+                <span>21 min </span>
+                <span>Updated Mar 15, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon security-icon"></div>
+                <paper-button class="security-bg">Start</paper-button>
+              </div>
+            </a>
+          
+          
+            
+            <a href="/labs/M4_final/index.html?index=..%2F..cs492" on-tap="navigate"
+               class="codelab-card category-security"
+               data-category="Security,Windows"
+               data-title="4: Final project"
+               data-duration="720"
+               data-summary="Demonstrate the knowledge and skills you have gained via a final project."
+               data-updated="2021-03-22T15:38:10Z"
+               data-tags="cs492"
+               data-pin="">
+              <div class="description"><h4>4: Final project</h4></div>
+	      <div class="description">Demonstrate the knowledge and skills you have gained via a final project.</div>
+              <div class="card-duration">
+                <span>720 min </span>
+                <span>Updated Mar 22, 2021</span>
+              </div>
+              <div class="card-footer">
+                <div class="category-icon security-icon"></div>
+                <paper-button class="security-bg">Start</paper-button>
+              </div>
+            </a>
+          
+      </card-sorter>
+
+      <div id="loading-placeholder" class="site-width">
+        Loading Codelabs, please wait...
+      </div>
+    </main>
+
+  </paper-header-panel>
+
+  <script src="/scripts/main.js"></script>
+</body>
+</html>
